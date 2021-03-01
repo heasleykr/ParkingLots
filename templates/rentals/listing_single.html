@@ -1,0 +1,75 @@
+<!-- templates/rentals/listing_single.html -->
+{% extends 'base.html' %}
+
+{% block title %}ParkingLots Home{% endblock title %}
+
+{% block content %}
+
+    <div id="homeView" class="jumbotron">
+
+        <h3>You've made it work, postively brilliant!</h3>
+
+        <h1>Listing Preview Here!!!</h1>
+        <hr />
+        <h2>{{ listing.title }}</h2>
+        <p>{{ listing.listing_id }}</p>
+        <p>{{ listing.description }}</p>
+        
+        <!-- TODO: Load Images -->
+        <h3>{{ listing.images_id }}</h3>
+
+        <a>TODO: Save/Love</a>
+
+            <!-- Descriptions  -->
+        <p>{{ listing.hourly_rate }}</p>
+        <p>{{ listing.day_rate }}</p>
+
+        <div>
+            {% if listing.overNight is True %}
+
+                <p>Overnight Parking: Yes</p>
+            
+            {% else %}
+            
+                <p>Overnight Parking: No</p>
+
+            {% endif %}
+        </div>
+
+        <div>
+            {% if listing.parking_Pass is True %}
+
+                <p>Parking Pass Needed: Yes</p>
+        
+            {% else %}
+        
+                <p>Parking Pass Needed: No</p>
+
+            {% endif %}
+        </div>
+
+        <div>
+            {% if listing.meet_Renter is True %}
+
+                <p>Lister must be present when parking: Yes</p>
+        
+            {% else %}
+        
+                <p>Lister must be present when parking: No</p>
+
+            {% endif %}
+        </div>
+
+        <!-- TODO: Map View Addition -->
+        <h3>TODO: Address: </h3>
+        <p>{{ listing.address.address1 }}</p>
+        <p>{{ listing.address.address2 }}</p>
+
+        <h2>{{ listing.description }}</h2>
+
+
+        <p class="lead"><a class="btn btn-outline-light btn-lg" href="rent" role="button">Rent</a></p>
+
+    </div>
+
+{% endblock content %}

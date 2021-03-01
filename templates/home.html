@@ -1,0 +1,27 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block title %}ParkingLots Home{% endblock title %}
+
+{% block content %}
+<br>
+<div id="homeView" class="jumbotron">
+    <h1 id="logo" class="display-4">ParkingLots </h1>
+    <p id="django" class="lead">A Parking RentalWebsite Built with Django</p>
+
+    {% if user.is_authenticated %}  
+        <!-- TODO MAP HERE -->
+        <h3>Map VIEW</h3>
+        <p class="lead"><a class="btn btn-outline-light btn-lg" href="{% url 'map' %}" role="button">Map View</a></p>
+   
+    {% else %}
+      <p>Please login to see this page.</p>
+      <p><a href="{% url 'login' %}">Log In</a></p>
+
+      <p>Not signed up? Register here: </p>
+      <p class="lead"><a class="btn btn-outline-light btn-lg" href="{% url 'signup' %}" role="button">Register Here</a></p>
+    {% endif %}
+
+</div>
+
+{% endblock content %}

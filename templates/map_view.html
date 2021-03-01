@@ -1,0 +1,30 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}ParkingLots Home{% endblock title %}
+
+
+{% block content %}
+<div>
+    <h4>Will this work?</h4>
+    <h4>Who can say??</h4>
+
+
+    <h3>My Google Maps</h3>
+    
+    <!--The div element for the map -->
+    <div id="map"></div>
+    
+</div>
+
+  {% block javascript %}
+  <script src="{% static 'js/map.js' %}"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key={{ APIKEY }}&callback=initMap&libraries=&v=weekly"
+    async>
+  </script>
+  {% endblock %} 
+
+
+{% endblock content %}

@@ -1,0 +1,32 @@
+:root {
+    --blue: #178DBE;
+    --blueO: rgba(23, 141, 190, 0.85);
+    --navy: #116C92;
+}
+
+#main_Back {
+    /* height: 100%; */
+    height: 900px;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: linear-gradient(var(--blueO), rgba(255, 255, 255, 0.85)), url(../img/parking.jpeg);
+}
+
+
+/* Home html */
+#homeView {
+    height: 100%
+}
+
+#logo {
+    font-family: 'Rancho', cursive;
+    color: white;
+}
+
+#map {
+    height: 400px;
+    /* The height is 400 pixels */
+    width: 100%;
+    /* The width is the width of the web page */
+}

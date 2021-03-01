@@ -1,0 +1,31 @@
+<!-- templates/listings/listing_address.html -->
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Create Listing{% endblock title %}
+
+{% block content %}
+<div id="homeView">
+    <h1>Create Listing: Page 1</h1>
+
+    {% if user.is_authenticated %}  
+
+        <h3>Enter your address</h3>
+
+        <form id="createListing" method="post">
+            {% csrf_token %}
+            {{ address_form }}
+            <button class="btn btn-outline-success" type="submit">Upload Images</button>
+        </form>
+
+    {% else %}
+      <p>Please login to see this page.</p>
+      <p><a href="{% url 'login' %}">Log In</a></p>
+
+      <p>Not signed up? Register here: </p>
+      <p class="lead"><a class="btn btn-outline-light btn-lg" href="{% url 'signup' %}" role="button">Register Here</a></p>
+    {% endif %}
+
+</div>
+
+{% endblock content %}

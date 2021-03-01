@@ -1,0 +1,47 @@
+{
+    "0": {
+        "listing_id": 1,
+        "lister_id": 1,
+        "title": "Christmas Tree Lane",
+        "description": "sdfsdfsd",
+        "hourly_Rate": "8.00",
+        "day_Rate": "50.00",
+        "overNight": true,
+        "parking_Pass": true,
+        "meet_Renter": false,
+        "vehicles": [
+            "C"
+        ],
+        "parking": [
+            "R"
+        ],
+        "date": "2021-03-03",
+        "time": "05:00:00",
+        "is_Rented": false,
+        "address_id": 1,
+        "images_id": 1
+    },
+    "1": {
+        "listing_id": 2,
+        "lister_id": 1,
+        "title": "Professional Scrum Master I",
+        "description": "sdfsds",
+        "hourly_Rate": "8.00",
+        "day_Rate": "50.00",
+        "overNight": true,
+        "parking_Pass": true,
+        "meet_Renter": false,
+        "vehicles": [
+            "C",
+            "T"
+        ],
+        "parking": [
+            "L"
+        ],
+        "date": "2021-03-03",
+        "time": "05:00:00",
+        "is_Rented": false,
+        "address_id": 2,
+        "images_id": 2
+    }
+}

@@ -1,0 +1,21 @@
+<!-- templates/listings/listing_success.html -->
+{% extends 'base.html' %}
+
+{% block title %}ParkingLots{% endblock title %}
+
+{% block content %}
+  <h1>Listing Successfully Posted!</h1>
+  <hr />
+  <h2>What are the next steps:</h2>
+  <h3>When your listing is booked, we will notify you via notification. You can message the renter, accept/decline the booking, or manage the rental with ParkingLots.</h3>
+
+  <h4>Listing Links</h4>
+  <ul>
+      <li>Manage Bookings</li>
+      <li>Manage Listing Dates</li>
+      <li>Message Inbox</li>
+      <li>Manage Listing</li>
+  </ul>
+  <a href="{% url 'home'%}">Click here to return home.</a>
+  
+{% endblock %}

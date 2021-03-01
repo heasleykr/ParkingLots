@@ -1,0 +1,91 @@
+<!-- templates/rentals/rent_listing.html -->
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}  
+{% load bootstrap4 %}       {# import bootstrap4/bootstrap3 #}
+{% bootstrap_css %}         {# Embed Bootstrap CSS #}
+{% bootstrap_javascript jquery='full' %} 
+
+
+
+{% block title %}ParkingLots Home{% endblock title %}
+
+{% block content %}
+
+    <div id="homeView" class="jumbotron">
+
+        <h1>RENT ME, postively brilliant!</h1>
+        <hr />
+        <h2>{{ listing.title }}</h2>
+        <p>{{ listing.listing_id }}</p>
+        <p>{{ listing.description }}</p>
+        
+        <!-- TODO: Load Images -->
+        <h3>{{ listing.images_id }}</h3>
+
+        <a>TODO: Save/Love</a>
+
+            <!-- Descriptions  -->
+        <p>{{ listing.hourly_rate }}</p>
+        <p>{{ listing.day_rate }}</p>
+
+        <div>
+            {% if listing.overNight is True %}
+
+                <p>Overnight Parking: Yes</p>
+            
+            {% else %}
+            
+                <p>Overnight Parking: No</p>
+
+            {% endif %}
+        </div>
+
+        <div>
+            {% if listing.parking_Pass is True %}
+
+                <p>Parking Pass Needed: Yes</p>
+        
+            {% else %}
+        
+                <p>Parking Pass Needed: No</p>
+
+            {% endif %}
+        </div>
+
+        <div>
+            {% if listing.meet_Renter is True %}
+
+                <p>Lister must be present when parking: Yes</p>
+        
+            {% else %}
+        
+                <p>Lister must be present when parking: No</p>
+
+            {% endif %}
+        </div>
+
+        <!-- TODO: Map View Addition -->
+        <h3>TODO: Address: </h3>
+        <p>{{ listing.address.address1 }}</p>
+        <p>{{ listing.address.address2 }}</p>
+
+        <h2>{{ listing.description }}</h2>
+
+
+
+        <!-- User Form Input -->
+        <form id="'datetimepicker2'" method="post">
+            {% csrf_token %}
+            {{ rental_form }}
+            <input class="btn btn-outline-success" type="submit" value="Rent"></input>
+        </form>
+
+        <p class="lead"><a class="btn btn-outline-light btn-lg" href="{% url 'listings' %}" role="button">Back to Rentals</a></p>
+
+       
+       
+
+    </div>
+
+
+{% endblock content %}

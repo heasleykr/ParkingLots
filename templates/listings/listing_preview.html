@@ -1,0 +1,72 @@
+<!-- templates/listings/listing_preview.html -->
+{% extends 'base.html' %}
+
+{% block title %}ParkingLots{% endblock title %}
+
+{% block content %}
+  <h1>Listing Preview Here!!!</h1>
+  <hr />
+  <h2>{{ listing_body.title }}</h2>
+
+
+      <h3>{{ img_obj.images_id }}</h3>
+
+      <!-- Descriptions -->
+      <p>{{ listing_body.hourly_rate }}</p>
+      <p>{{ listing_body.day_rate }}</p>
+
+      <div>
+          {% if listing_body.overNight is True %}
+
+            <p>Overnight Parking: Yes</p>
+          
+          {% else %}
+          
+            <p>Overnight Parking: No</p>
+
+          {% endif %}
+      </div>
+
+      <div>
+        {% if listing_body.parking_Pass is True %}
+
+          <p>Parking Pass Needed: Yes</p>
+        
+        {% else %}
+        
+          <p>Parking Pass Needed: No</p>
+
+        {% endif %}
+      </div>
+
+      <div>
+        {% if listing_body.meet_Renter is True %}
+
+          <p>Lister must be present when parking: Yes</p>
+        
+        {% else %}
+        
+          <p>Lister must be present when parking: No</p>
+
+        {% endif %}
+      </div>
+
+      <!-- TODO: Map View Addition -->
+      <h3>Address: </h3>
+      <p>{{ listing_address.address1 }}</p>
+      <p>{{ listing_address.address2 }}</p>
+      <p>{{ listing_address.city }}</p>
+      <p>{{ listing_address.state }}</p>
+      <p>{{ listing_address.zip }}</p>
+
+
+      <!-- Address -->
+      <h2>{{ listing_body.description }}</h2>
+  
+
+
+      <a href="{% url 'listing_success' %}">List Property</a>
+      <a href="{% url 'listing_success' %}">Edit Property.</a>
+  
+  
+{% endblock %}

@@ -1,0 +1,9 @@
+<!-- templates/registration/logged_out.html -->
+{% extends 'base.html' %}
+
+{% block title %}ParkingLots{% endblock title %}
+
+{% block content %}
+  <p>Logged out!</p>
+  <a href="{% url 'login'%}">Click here to login again.</a>
+{% endblock %}
