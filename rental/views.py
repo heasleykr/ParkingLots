@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.db import models
 from django.conf import settings
 from django.contrib.auth import get_user_model
-from django.views.generic import TemplateView, CreateView, ListView
+from django.views.generic import TemplateView, CreateView, ListView, DetailView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 import json
 from django.core import serializers

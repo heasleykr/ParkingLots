@@ -25,7 +25,7 @@
                                 <p>{{ message.msg_content }}</p>
                                 <!-- TODO: Add links to single listing and booking -->
 
-                                <a class="link-warning" href="{% url 'single_booking' message.rentalItem_id %}">Booking Details</a> | 
+                                
                             </div>
                                 <!-- Message Threads -->
                             <div class="card-footer bg-transparent">
@@ -55,6 +55,12 @@
                         <div id="card-body" class="card-body bg-transparent">
                             <p>{{ message.msg_content }}</p>
                             <!-- TODO: Add links to single listing and booking -->
+
+                            {% for rentalItem in message.message.all %}
+                                <p>{{rentalItem.rental_Item_id}}</p>
+                            {% endfor %}
+                                
+                            
                         </div>
                             <!-- TODO: Message Thread/Article Comments? -->
                     </div>
