@@ -71,19 +71,12 @@ def send_Listings(request):
 #renders all bookings for requested user
 def all_Bookings(request):
 
-    
-
     if request.method == "GET":
 
         #Query DB: grab reguested bookings for user, both rentals and listings
         user_rented_Items = RentalItem.objects.filter(renter=request.user)
 
         user_Listed_Items = RentalItem.objects.filter(listing__lister=request.user)
-
-        #Grab respective objects
-        # theRental = RentalItem.objects.get(pk=id)
-        # theListing = theRental.listing
-        # rental_details = theRental.rental
 
 
     #send to bookings.html
@@ -190,37 +183,8 @@ def rent_Listing(request, listing_id):
     return render(request,'rentals/rent_listing.html', {'listing': theOne, 'rental_form': rForm})
 
 
-
-
-
-
 # Rental Request Demo View
 #display confirmation to user/instructions of steps
 class RequestedRentalView(TemplateView):
     template_name = 'rentals/rental_request.html'
-
-
-
-
-
-
-
-
-'''
-Fetching data from Foreign Key relationships
-
-class A(models.Model): 
-   pass
-  
-class B(models.Model): 
-   a = ForeignKey(ModelA) 
-  
-  
-# Forward ForeignKey relationship 
-A.objects.select_related('a').all() 
-  
-# Reverse ForeignKey relationship 
-A.objects.prefetch_related('modelb_set').all()  
-
-'''
 

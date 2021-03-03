@@ -13,15 +13,59 @@
 
     <hr />
     {% if user.is_authenticated %} 
-        <!-- Print user's rental requets -->
+        <!-- Print user's rental requests -->
+        <h2>Your Rental Requests: </h2>
         {% for item in rented_Items %}
-            <h2>{{ rented_Items.rental_Item_id }}</h2>
+            <div id="card" class="card">
+                <div id="header"
+                class="card-header border-light bg-transparent">
+                    <span class="font-weight-bold">{{ item.rental.confirmationNumber }}</span>
+                    <span id="user">For: {{ item.listing.title }} | On: {{ item.rental.date }}</span>
+                </div>
+                <div id="card-body" class="card-body bg-transparent">
+                    {% if item.cancelled == False and item.confirmed == False%}
+                        <p>Status: Pending Action</p>
+                        <a class="btn btn-outline-info btn-sm" href="{% url 'single_booking' item.rental_Item_id %}" role="button">Details</a>
+                    
+                    {% elif item.cancelled == True%}
+                        <p>Status: Cancelled</p>
+                        <a class="btn btn-outline-info btn-sm" href="{% url 'single_booking' item.rental_Item_id %}" role="button">Details</a>
+
+                    {% else %}
+                        <p>Status: Approved</p>
+                        <a class="btn btn-outline-info btn-sm" href="{% url 'single_booking' item.rental_Item_id %}" role="button">Details</a>
+
+                    {% endif %}
+                </div>
+            </div>   
         {% endfor %}
 
-
+        <hb />
         <!-- Print user's listed rental requests -->
+        <h2>Your Listing Requests: </h2>
         {% for item in listed_Items %}
-            <h2>{{ listed_Items.rental_Item_id }}</h2>
+            <div id="card" class="card">
+                <div id="header"
+                class="card-header border-light bg-transparent">
+                    <span class="font-weight-bold">{{ item.rental.confirmationNumber }}</span>
+                    <span id="user">For: {{ item.listing.title }} | On: {{ item.rental.date }}</span>
+                </div>
+                <div id="card-body" class="card-body bg-transparent">
+                    {% if item.cancelled == False and item.confirmed == False%}
+                        <p>Status: Your Action Needed</p>
+                        <a class="btn btn-outline-success btn-sm" href="{% url 'single_booking' item.rental_Item_id %}" role="button">Take Action</a>
+                    
+                    {% elif item.cancelled == True%}
+                        <p>Status: Cancelled</p>
+                        <a class="btn btn-outline-info btn-sm" href="{% url 'single_booking' item.rental_Item_id %}" role="button">Details</a>
+
+                    {% else %}
+                        <p>Status: Approved</p>
+                        <a class="btn btn-outline-info btn-sm" href="{% url 'single_booking' item.rental_Item_id %}" role="button">Details</a>
+
+                    {% endif %}
+                </div>
+            </div>  
         {% endfor %}
 
     {% else %}
