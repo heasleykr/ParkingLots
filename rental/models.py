@@ -33,11 +33,33 @@ class Message(models.Model):
     msg_content = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    #Foreign Key 
+    rentalItem_id = models.IntegerField(null=True, blank=True)
+    
+    listingItem_id = models.ForeignKey(Listing, on_delete=models.CASCADE, related_name='listing')
+
     #Forced property for VS Code // Django adds dynamically
     objects = models.Manager()
 
     def __str__(self):
         return str(self.message_id)
+
+    def get_absolute_url(self):
+        return reverse('single_message', args=[str(self.message_id)])
+
+class Thread(models.Model):
+    message = models.ForeignKey(Message, on_delete=models.CASCADE, related_name='threads')
+    comment = models.CharField(max_length=140)
+    author = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return self.comment
+
+    def get_absolute_url(self):
+        return reverse('inbox')
 
 # Rental Item Model (weak entity to house unique Listing, Rental, and Users foreign keys) This is closely modeled after Django-SHOP 'OrderItem'
 class RentalItem(models.Model):

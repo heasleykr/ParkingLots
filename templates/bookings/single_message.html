@@ -1,0 +1,22 @@
+<!-- templates/bookings/single_message.html -->
+{% extends 'base.html' %}
+
+{% block title %}ParkingLots{% endblock title %}
+
+{% block content %}
+  <h1>Booking Message Thread</h1>
+  <a href="{% url 'inbox'%}">Click here to return to Inbox.</a>
+  <hr />
+
+  <div id="detail" class="article-entry">
+      <h2 id="postTitle">{{ message.title }}</h2>
+      <p>by {{ object.author }} | {{ object.date }}</p>
+      <p>{{ object.body }}</p>
+  </div>
+  
+  <div id="optionBar">
+      <p id="postEdit"><a class="link-warning" href="{% url 'article_edit' article.pk %}">Edit</a> | <a class="link-warning" href="{% url 'article_delete' article.pk %}">Delete</a></p>
+  
+      <p id="back">Back to <a class="ml-2 btn btn-outline-light" href="{% url 'article_list' %}">All Articles</a></p>
+  </div>
+  {% endblock content %}

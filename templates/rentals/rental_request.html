@@ -7,11 +7,18 @@
 <br>
 <div id="homeView">
     <h1 id="logo" class="display-4">ParkingLots </h1>
-    <p id="django" class="lead">Rental Successfully Posted</p>
+    <p id="django" class="lead">Rental Requested!</p>
 
     {% if user.is_authenticated %}  
+        <p>Thanks for your rental request!</p>
+        <p>We'll notify you when the lister takes action on your request!</p>
         <!-- TODO MAP HERE -->
-        <p class="lead"><a class="btn btn-outline-light btn-lg" href="{% url 'map' %}" role="button">Map View</a></p>
+
+        <p>Search for more rentals: </p>
+        <p class="lead"><a class="btn btn-outline-light btn-lg" href="{% url 'listings' %}" role="button">Search Listings</a></p>
+
+        <p>Home: </p>
+        <p class="lead"><a class="btn btn-outline-light btn-lg" href="{% url 'home' %}" role="button">Home</a></p>
    
     {% else %}
       <p>Please login to see this page.</p>

@@ -54,10 +54,10 @@
                 </ul>
             </div>
         </div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="position:absolute; left: 77%">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="position:absolute;">
             {% if user.is_authenticated %}
             <ul class="navbar-nav ml-auto">
-                <li><a class="btn btn-outline-light" href="{% url 'home' %}">Add New Article</a></li>
+                <li><a class="btn btn-outline-active" href="{% url 'inbox' %}">Inbox</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         {{ user.username }}

@@ -2,15 +2,19 @@
     "0": {
         "listing_id": 1,
         "lister_id": 1,
-        "title": "Christmas Tree Lane",
-        "description": "sdfsdfsd",
+        "title": "Spacious Driveway",
+        "description": "This is a spacious, paved driveway, near the SDSU football stadium. Just a short walk away from campus! Overnight parking welcome. Oversized vehicles welcome.",
         "hourly_Rate": "8.00",
         "day_Rate": "50.00",
         "overNight": true,
-        "parking_Pass": true,
+        "parking_Pass": false,
         "meet_Renter": false,
         "vehicles": [
-            "C"
+            "C",
+            "T",
+            "V",
+            "M",
+            "O"
         ],
         "parking": [
             "R"
@@ -24,16 +28,64 @@
     "1": {
         "listing_id": 2,
         "lister_id": 1,
-        "title": "Professional Scrum Master I",
-        "description": "sdfsds",
-        "hourly_Rate": "8.00",
-        "day_Rate": "50.00",
-        "overNight": true,
+        "title": "Garage Parking",
+        "description": "Covered garage space in the heart of Hillcrest!  Off street parking, with camera security monitoring 24 hours!  Compact cars only, must be gone by 8pm. Entry code given upon rental confirmation.",
+        "hourly_Rate": "7.00",
+        "day_Rate": "40.00",
+        "overNight": false,
+        "parking_Pass": false,
+        "meet_Renter": false,
+        "vehicles": [
+            "C"
+        ],
+        "parking": [
+            "G"
+        ],
+        "date": "2021-03-03",
+        "time": "05:00:00",
+        "is_Rented": false,
+        "address_id": 2,
+        "images_id": 2
+    },
+    "2": {
+        "listing_id": 3,
+        "lister_id": 2,
+        "title": "Street Parking",
+        "description": "Street parking space available.  Parking pass given upon rental request. Can accommodate compact to small suvs.",
+        "hourly_Rate": "9.00",
+        "day_Rate": "65.00",
+        "overNight": false,
         "parking_Pass": true,
+        "meet_Renter": true,
+        "vehicles": [
+            "C",
+            "T",
+            "M"
+        ],
+        "parking": [
+            "S"
+        ],
+        "date": "2021-03-03",
+        "time": "05:00:00",
+        "is_Rented": false,
+        "address_id": 3,
+        "images_id": 3
+    },
+    "3": {
+        "listing_id": 4,
+        "lister_id": 2,
+        "title": "Open Parking Lot",
+        "description": "Space available in apartment parking lot. Large spaces and not typically full during the days!  Parking is easy and I will meet you to give you my visitor's pass.",
+        "hourly_Rate": "6.00",
+        "day_Rate": "35.00",
+        "overNight": true,
+        "parking_Pass": false,
         "meet_Renter": false,
         "vehicles": [
             "C",
-            "T"
+            "T",
+            "V",
+            "M"
         ],
         "parking": [
             "L"
@@ -41,7 +93,108 @@
         "date": "2021-03-03",
         "time": "05:00:00",
         "is_Rented": false,
-        "address_id": 2,
-        "images_id": 2
+        "address_id": 4,
+        "images_id": 4
+    },
+    "4": {
+        "listing_id": 5,
+        "lister_id": 3,
+        "title": "Gated Lot",
+        "description": "I have an open lot that can accommodate large and oversize vehicles! Park anywhere, overnight camping/parking welcome. Please no bonfires.",
+        "hourly_Rate": "9.00",
+        "day_Rate": "65.00",
+        "overNight": true,
+        "parking_Pass": false,
+        "meet_Renter": false,
+        "vehicles": [
+            "C",
+            "T",
+            "V",
+            "M",
+            "O"
+        ],
+        "parking": [
+            "O"
+        ],
+        "date": "2021-03-03",
+        "time": "05:00:00",
+        "is_Rented": false,
+        "address_id": 5,
+        "images_id": 5
+    },
+    "5": {
+        "listing_id": 6,
+        "lister_id": 3,
+        "title": "Paved Driveway",
+        "description": "Renting out my driveway for day use. Paved and no need to meet myself.",
+        "hourly_Rate": "7.50",
+        "day_Rate": "60.00",
+        "overNight": false,
+        "parking_Pass": false,
+        "meet_Renter": false,
+        "vehicles": [
+            "C",
+            "T",
+            "V",
+            "M"
+        ],
+        "parking": [
+            "R"
+        ],
+        "date": "2021-03-03",
+        "time": "05:00:00",
+        "is_Rented": false,
+        "address_id": 6,
+        "images_id": 6
+    },
+    "6": {
+        "listing_id": 7,
+        "lister_id": 4,
+        "title": "Street Parking",
+        "description": "Downtown Seattle Parking! Near the mall and restaurants. Parking pass needed, will meet you at spot for exchange.",
+        "hourly_Rate": "5.00",
+        "day_Rate": "30.00",
+        "overNight": false,
+        "parking_Pass": true,
+        "meet_Renter": true,
+        "vehicles": [
+            "C",
+            "T",
+            "M"
+        ],
+        "parking": [
+            "S"
+        ],
+        "date": "2021-03-03",
+        "time": "05:00:00",
+        "is_Rented": false,
+        "address_id": 7,
+        "images_id": 7
+    },
+    "7": {
+        "listing_id": 8,
+        "lister_id": 4,
+        "title": "Driveway Cobblestone",
+        "description": "Gorgeous residential home with cobblestone driveway open for day use. Park and walk to nice hiking trails and picnic areas.",
+        "hourly_Rate": "4.00",
+        "day_Rate": "25.00",
+        "overNight": true,
+        "parking_Pass": false,
+        "meet_Renter": false,
+        "vehicles": [
+            "C",
+            "T",
+            "V",
+            "M",
+            "O"
+        ],
+        "parking": [
+            "R"
+        ],
+        "date": "2021-03-03",
+        "time": "05:00:00",
+        "is_Rented": false,
+        "address_id": 8,
+        "images_id": 8
     }
 }

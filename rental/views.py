@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.db import models
 from django.conf import settings
 from django.contrib.auth import get_user_model
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, ListView
+from django.views.generic.edit import UpdateView, DeleteView, CreateView
 import json
 from django.core import serializers
 from .forms import RentalForm
@@ -16,6 +17,17 @@ from parking.models import Listing, Address, Images
 #Needs to call the http geocoding address
 #def search():
     # http://maps.googleapis.com/maps/api/geocode/json?address=<address retrieved from form>&sensor=true
+
+
+#Display Inbox messages
+class InboxView(ListView):
+    model = Message
+    template_name = 'bookings/inbox.html'
+
+#Display Single Message
+class MessageDetailView(DetailView):
+    model = Message
+    template_name = 'single_message.html'
 
 #Display all Listings from Database
 def send_Listings(request): 
@@ -54,6 +66,21 @@ def send_Listings(request):
 
     # render & send to listings.js
     return render(request, 'listings.html') 
+
+
+#renders single booking request with details
+def single_Booking(request, rental_id):
+
+    id = int(rental_id)
+
+    if request.method == "GET":
+        #grad reguested listing by id
+        theRental = RentalItem.objects.get(pk=id)
+
+        print(theRental)
+
+        #send to listing_single.html
+    return render(request,'bookings/single_booking.html', {'rental': theRental})
 
 
 #renders single listing with details
@@ -109,7 +136,6 @@ def rent_Listing(request, listing_id):
             new_message = Message()
             new_message.sender = request.user
             new_message.receiver = theOne.lister
-            #new_message.receiver = 12 #TODO: Update Models.
             new_message.msg_content = posted_Form.cleaned_data.get("comment")
 
             #create Rental Item
@@ -120,6 +146,10 @@ def rent_Listing(request, listing_id):
             rental_Item.rental = new_rental
             rental_Item.listing = theOne
             rental_Item.renter = request.user
+
+            #Message Foreign Key assigments
+            new_message.rentalItem_id = rental_Item.rental_Item_id
+            new_message.listingItem_id = theOne
 
             #Save Objects to Database
             new_rental.save()

@@ -1,0 +1,71 @@
+<!-- templates/bookings/inbox.html -->
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block title %}ParkingLots Listings{% endblock title %}
+
+
+{% block content %}
+<div id="list" class="container">
+    <h1 id="list_header" class="articleHeads">{{ user.first_name }}'s Inbox</h1>
+    {% if user.is_authenticated %} 
+        <h3>Sent Messages: </h3>
+        {% for message in object_list %}
+                <!-- Display only user's sent messages -->
+                    {% if message.sender == user %}
+                        <div id="card" class="card">
+                            <div id="header"
+                            class="card-header border-light bg-transparent">
+                                <span id="{{ message.message_id }}" class="font-weight-bold">{{ message.listing.title }}</span>
+                                <span id="user">To: {{ message.receiver }} | {{ message.created_at }}</span>
+                            </div>
+                            <div id="card-body" class="card-body bg-transparent">
+                                <p>{{ message.msg_content }}</p>
+                                <!-- TODO: Add links to single listing and booking -->
+
+                                <a class="link-warning" href="{% url 'single_booking' message.rentalItem_id %}">Booking Details</a> | 
+                            </div>
+                                <!-- Message Threads -->
+                            <div class="card-footer bg-transparent">
+                                {% for thread in message.threads.all %}
+                                    <p>
+                                        <span class="font-weight-bold">
+                                            {{ thread.author }}
+                                        </span>
+                                        {{ thread.comment }}
+                                    </p>
+                                {% endfor %}       
+                            </div>
+                        </div>
+                    {% endif %}
+        {% endfor %}               
+                        
+        <h3>Received Messages: </h3>
+        {% for message in object_list %}
+            <!-- Display only user's received messages -->
+                {% if message.receiver == user %}
+                    <div id="card" class="card">
+                        <div id="header"
+                        class="card-header border-light bg-transparent">
+                            <span id="{{ message.message_id }}" class="font-weight-bold">{{ message.listing.title }}</span>
+                            <span id="user">From: {{ message.sender }} | {{ message.created_at }}</span>
+                        </div>
+                        <div id="card-body" class="card-body bg-transparent">
+                            <p>{{ message.msg_content }}</p>
+                            <!-- TODO: Add links to single listing and booking -->
+                        </div>
+                            <!-- TODO: Message Thread/Article Comments? -->
+                    </div>
+                {% endif %}
+        {% endfor %}
+    {% else %}
+        <p>Please login to see this page.</p>
+        <p><a href="{% url 'login' %}">Log In</a></p>
+
+        <p>Not signed up? Register here: </p>
+        <p class="lead"><a class="btn btn-outline-light btn-lg" href="{% url 'signup' %}" role="button">Register Here</a></p>
+    {% endif %} 
+</div>
+{% endblock content%}
