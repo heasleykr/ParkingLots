@@ -4,8 +4,125 @@
 {% block title %}ParkingLots{% endblock title %}
 
 {% block content %}
-  <h1>Single Booking View!</h1>
+  <h1>Booking Request</h1>
   <hr />
-  <a href="{% url 'home'%}">Click here to return home.</a>
   
+  <!-- Lister Display -->
+  {% if listing.lister == user %}
+    <h3>Your listing has been requested for rental: </h3>
+
+
+    <hr />
+
+    <!-- Display Action to be taken, if new request -->
+    {% if rental_Item.cancelled == False and rental_Item.confirmed == False %}
+      <h2>Your Next Step: </h2>
+      <a class="btn btn-outline-success btn-sm" href="{% url 'home'%}" role="button">Confirm Request</a>
+      <a class="btn btn-outline-danger btn-sm" href="{% url 'home'%}" role="button">Deny Request</a>
+
+    {% else %}
+      {% if rental_Item.cancelled == True %}
+        <h2>Rental Canceled</h2>
+        <h4>Canceled Reason: ADD in MODEL </h4>
+      {% elif rental_Item.confirmed == True %}
+        <h2>Rental Confirmed</h2>
+        <h4>No further action needed from you at this time.</h4>
+      {% endif %}
+    {% endif %}
+
+
+    <p><a href="{% url 'home'%}">Contact Customer</a> |  <a href="{% url 'home'%}">Contact ParkingLots</a></p>
+
+    <h3>Rental requested for: {{ rental.date }}</h3>
+    <h3>From: {{ rental.startTime }} To: {{ rental.endTime }}</h3>
+    <!-- TODO: Add vehicle type -->
+    <hr />
+    <h3>Total: ${{ rental.totalPrice }}</h3>
+
+
+    <!-- Display Renter View -->
+  {% else %}
+    <h3>Your Rental Request: </h3>
+
+
+    <hr />
+    <!-- Display current stage -->
+    {% if rental_Item.cancelled == False and rental_Item.confirmed == False %}
+      <h2>Your request is still being processed.</h2>
+      <h4> No further action is needed from you at this time. We'll notify you when action has been taken </h4>
+    {% else %}
+      {% if rental_Item.cancelled == True %}
+        <h2>Rental Canceled</h2>
+        <h4>Canceled Reason: ADD in MODEL </h4>
+      {% elif rental_Item.confirmed == True %}
+        <h2>Rental Confirmed</h2>
+        <h4>{{ rental.confirmationNumber }}</h4>
+      {% endif %}
+    {% endif %}
+
+    <p><a href="{% url 'home'%}">Contact Lister</a> |  <a href="{% url 'home'%}">Contact ParkingLots</a></p>
+
+    <h3>Rental requested for: {{ rental.date }}</h3>
+    <h3>From: {{ rental.startTime }} To: {{ rental.endTime }}</h3>
+    <!-- TODO: Add vehicle type -->
+    <hr />
+    <h3>You Pay: ${{ rental.totalPrice }}</h3>
+
+  {% endif %}
+
+    <hr />
+     <!-- Generic Listing Display View -->
+    <div id="listerView" class="jumbotron">
+      <h2>{{ listing.title }}</h2>
+      <p>{{ listing.description }}</p>
+      
+      <!-- TODO: Load Images -->
+      <h3>{{ listing.images_id }}</h3>
+
+          <!-- Descriptions  -->
+      <p>{{ listing.hourly_rate }}</p>
+      <p>{{ listing.day_rate }}</p>
+
+      <div>
+          {% if listing.overNight is True %}
+
+              <p>Overnight Parking: Yes</p>
+          
+          {% else %}
+          
+              <p>Overnight Parking: No</p>
+
+          {% endif %}
+      </div>
+
+      <div>
+          {% if listing.parking_Pass is True %}
+
+              <p>Parking Pass Needed: Yes</p>
+      
+          {% else %}
+      
+              <p>Parking Pass Needed: No</p>
+
+          {% endif %}
+      </div>
+
+      <div>
+          {% if listing.meet_Renter is True %}
+
+              <p>Lister must be present when parking: Yes</p>
+      
+          {% else %}
+      
+              <p>Lister must be present when parking: No</p>
+
+          {% endif %}
+      </div>
+
+      <!-- TODO: Map View Addition -->
+      <h3>TODO: Address: </h3>
+      <p>{{ listing.address.address1 }}</p>
+      <p>{{ listing.address.address2 }}</p>
+
+    </div>
 {% endblock %}

@@ -29,6 +29,7 @@ class MessageDetailView(DetailView):
     model = Message
     template_name = 'single_message.html'
 
+
 #Display all Listings from Database
 def send_Listings(request): 
 
@@ -67,6 +68,26 @@ def send_Listings(request):
     # render & send to listings.js
     return render(request, 'listings.html') 
 
+#renders all bookings for requested user
+def all_Bookings(request):
+
+    
+
+    if request.method == "GET":
+
+        #Query DB: grab reguested bookings for user, both rentals and listings
+        user_rented_Items = RentalItem.objects.filter(renter=request.user)
+
+        user_Listed_Items = RentalItem.objects.filter(listing__lister=request.user)
+
+        #Grab respective objects
+        # theRental = RentalItem.objects.get(pk=id)
+        # theListing = theRental.listing
+        # rental_details = theRental.rental
+
+
+    #send to bookings.html
+    return render(request,'bookings/bookings.html', {'rented_Items': user_rented_Items, 'listed_Items': user_Listed_Items})
 
 #renders single booking request with details
 def single_Booking(request, rental_id):
@@ -76,11 +97,11 @@ def single_Booking(request, rental_id):
     if request.method == "GET":
         #grad reguested listing by id
         theRental = RentalItem.objects.get(pk=id)
+        theListing = theRental.listing
+        rental_details = theRental.rental
 
-        print(theRental)
-
-        #send to listing_single.html
-    return render(request,'bookings/single_booking.html', {'rental': theRental})
+    #send to listing_single.html
+    return render(request,'bookings/single_booking.html', {'rental_Item': theRental, 'rental': rental_details, 'listing': theListing})
 
 
 #renders single listing with details
@@ -182,17 +203,7 @@ class RequestedRentalView(TemplateView):
 
 
 
-'''
-creating function for bookings/listings/
-<input type="button" value="Submit" onClick="create_note();">
-https://stackoverflow.com/questions/5735107/make-queries-from-javascript-to-django-server
-'''
 
-'''
-DESERIALIZING JSON File in Python
-with open("data_file.json", "r") as read_file:
-    data = json.load(read_file)
-    '''
 
 
 '''

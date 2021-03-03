@@ -11,7 +11,7 @@ urlpatterns = [
     path('listings/<listing_id>/rent', views.rent_Listing, name='rent_listing'),
     path('rental_request/', RequestedRentalView.as_view(), name='request'),
     path('inbox/', InboxView.as_view(), name='inbox'),
-    path('bookings/<rental_id>/', views.single_Booking, name='all_bookings'),
+    path('bookings/', views.all_Bookings, name='all_bookings'),
     path('<int:rental_id>/', views.single_Booking, name='single_booking'),
 
 ]

@@ -25,6 +25,10 @@ class Rental(models.Model):
 
     def __str__(self):
         return str(self.rental_id)
+    
+
+    # def get_absolute_url(self):6
+    #     return reverse('single_booking', args=[str(self.rental_id)])
 
 class Message(models.Model):
     message_id = models.AutoField(primary_key=True)

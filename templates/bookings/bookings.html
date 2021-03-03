@@ -1,0 +1,35 @@
+<!-- templates/bookings/bookings.html -->
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block title %}ParkingLots Listings{% endblock title %}
+
+
+{% block content %}
+<div id="list" class="container">
+    <h1 id="list_header" class="articleHeads">{{ user.first_name }}'s Rentals</h1>
+
+    <hr />
+    {% if user.is_authenticated %} 
+        <!-- Print user's rental requets -->
+        {% for item in rented_Items %}
+            <h2>{{ rented_Items.rental_Item_id }}</h2>
+        {% endfor %}
+
+
+        <!-- Print user's listed rental requests -->
+        {% for item in listed_Items %}
+            <h2>{{ listed_Items.rental_Item_id }}</h2>
+        {% endfor %}
+
+    {% else %}
+        <p>Please login to see this page.</p>
+        <p><a href="{% url 'login' %}">Log In</a></p>
+
+        <p>Not signed up? Register here: </p>
+        <p class="lead"><a class="btn btn-outline-light btn-lg" href="{% url 'signup' %}" role="button">Register Here</a></p>
+    {% endif %} 
+</div>
+{% endblock content%}
