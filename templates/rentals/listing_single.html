@@ -15,8 +15,27 @@
         <p>{{ listing.listing_id }}</p>
         <p>{{ listing.description }}</p>
         
-        <!-- TODO: Load Images -->
-        <h3>{{ listing.images_id }}</h3>
+        <!-- Load All Images -->
+        <div>
+
+            {% if listing.images.image1 %}
+                <img src="/media/{{ listing.images.image1 }}"/>
+            {% endif %}
+
+            {% if listing.images.image2 %}
+                <img src="/media/{{ listing.images.image2 }}"/>
+            {% endif %}
+
+            {% if listing.images.image3 %}
+                <img src="/media/{{ listing.images.image3 }}"/>
+            {% endif %}
+
+            {% if listing.images.image4 %}
+                <img src="/media/{{ listing.images.image4 }}"/>
+            {% endif %}
+
+
+        </div>
 
         <a>TODO: Save/Love</a>
 
