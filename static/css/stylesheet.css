@@ -2,24 +2,45 @@
     --blue: #178DBE;
     --blueO: rgba(23, 141, 190, 0.85);
     --navy: #116C92;
+    --cubano: #008991;
 }
 
+/* Nav Styling */
+nav {
+    height: 9rem;
+}
+
+#navMain a {
+    color: #008991;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+}
+
+#parkingLogo {
+    /* size: 1rem; */
+    width: 90px;
+    height: 60px;
+    margin-left: 2rem;
+}
+
+/* Main Content Div */
 #main_Back {
-    /* height: 100%; */
     height: 900px;
     margin: 0;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-image: linear-gradient(var(--blueO), rgba(255, 255, 255, 0.85)), url(../img/parking.jpeg);
+    background-position: center;
+    background-image: url(../img/cubano4.jpg)
 }
-
 
 /* Home html */
 #homeView {
     height: 100%
 }
 
-#logo {
+/* Page Headers */
+#logo,
+#listingHead {
     font-family: 'Rancho', cursive;
     color: white;
 }
@@ -29,4 +50,22 @@
     /* The height is 400 pixels */
     width: 100%;
     /* The width is the width of the web page */
+}
+
+/* Listings.html */
+#listingMain {
+    padding-top: 10rem;
+}
+
+#listingHead {
+    font-size: 8rem;
+    display: flex;
+    justify-content: center;
+    padding-left: auto;
+    padding-right: auto;
+}
+
+#listings2 {
+    padding-top: 36rem;
+    border-top: yellow;
 }

@@ -68,6 +68,19 @@ def send_Listings(request):
     # render & send to listings.js
     return render(request, 'listings.html') 
 
+########### New Listing View #####################
+#renders all bookings for requested user
+def all_Listings(request):
+
+    if request.method == "GET":
+
+        #Query DB: grab all listings
+        list = Listing.objects.all()
+
+
+    #send to listings.html
+    return render(request,'all_listings.html', {'listings': list})
+
 #renders all bookings for requested user
 def all_Bookings(request):
 
@@ -81,6 +94,7 @@ def all_Bookings(request):
 
     #send to bookings.html
     return render(request,'bookings/bookings.html', {'rented_Items': user_rented_Items, 'listed_Items': user_Listed_Items})
+
 
 #renders single booking request with details
 def single_Booking(request, rental_id):

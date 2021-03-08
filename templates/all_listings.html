@@ -1,0 +1,29 @@
+<!-- templates/listings.html -->
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+
+{% block title %}ParkingLots Listings{% endblock title %}
+
+
+{% block content %}
+    <div id="listingMain">
+        <h1 id="listingHead">Parking</h1>
+
+        <!-- Grid Layout -->
+        <div>
+            {% for list in listings %}
+                <img src="/media/{{ list.images.image1 }}"/>
+
+
+
+        </div>
+     
+
+
+    </div>
+  
+
+{% endblock content%}

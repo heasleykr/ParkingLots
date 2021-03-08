@@ -95,12 +95,13 @@ function init() {
                         }
                         x++;
                     }
-
+                    // <img src="${data[count].images_id}" id="imageProp"></img>
 
                     //add HTML content and display
                     listingItem = `
-                        <div id="${data[count].listing_id}" class="listing" style="width: 18rem;">
-                            <img src="${data[count].images_id}" id="imageProp">
+                        <div id="${data[count].listing_id}" class="listing row" style="width: 18rem;">
+                        <div class="col-sm">    
+                        <img src="${data[count].images.image1}" id="imageProp">
                             <p>${hearIconOutline}</p>
                             <div id="listHead">
                                 <h2 class="card-title">${data[count].title}</h2>

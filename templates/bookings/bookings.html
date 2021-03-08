@@ -23,11 +23,11 @@
                     <span id="user">For: {{ item.listing.title }} | On: {{ item.rental.date }}</span>
                 </div>
                 <div id="card-body" class="card-body bg-transparent">
-                    {% if item.cancelled == False and item.confirmed == False%}
+                    {% if item.cancelled == False and item.confirmed == False %}
                         <p>Status: Pending Action</p>
                         <a class="btn btn-outline-info btn-sm" href="{% url 'single_booking' item.rental_Item_id %}" role="button">Details</a>
                     
-                    {% elif item.cancelled == True%}
+                    {% elif item.cancelled == True %}
                         <p>Status: Cancelled</p>
                         <a class="btn btn-outline-info btn-sm" href="{% url 'single_booking' item.rental_Item_id %}" role="button">Details</a>
 
