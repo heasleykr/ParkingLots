@@ -5,22 +5,18 @@
 {% block title %}Create Listing{% endblock title %}
 
 {% block content %}
-<div id="homeView">
-    <h1>Create Listing: Page 2 </h1>
+<div class="container" id="imagesCreate">
+    <h1 id="create1">Create Listing</h1>
+    <p>Upload some photos for your listing </p>
 
     {% if user.is_authenticated %}  
-
-        <h3>Enter your listing</h3>
-
-        <form id="createListing" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ images_form }}
-            
-
-            <!-- Hidden Passed Address Key for linking -->
-            <!-- address_pk = {{ listing_address.address.pk }} -->
-            <button class="btn btn-outline-success" type="submit">Finish Listing</button>
-        </form>
+        <div class="container-sm flex-column">
+            <form id="createListing" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ images_form }}
+                <button class="btn btn-outline-success" type="submit">Finish Listing</button>
+            </form>
+        </div>
 
 
     {% else %}

@@ -5,89 +5,120 @@
 
 {% block content %}
 
-    <div id="homeView" class="jumbotron">
+    <div id="singleListing">
+        <div id="cardView">
+            <h2 id="title">{{ listing.title}}</h2>
+            <div id="titleSub" class="d-flex justify-content-between">
+                <p id="location">{{ listing.address.city }}, {{ listing.address.state }}</p>
 
-        <h3>You've made it work, postively brilliant!</h3>
+                <div id="love" class="d-flex justify-content-around">
+                    <i class="far fa-heart"></i>
+                    <p>Save</p>
+                </div>
+            </div>
 
-        <h1>Listing Preview Here!!!</h1>
-        <hr />
-        <h2>{{ listing.title }}</h2>
-        <p>{{ listing.listing_id }}</p>
-        <p>{{ listing.description }}</p>
-        
-        <!-- Load All Images -->
-        <div>
-
-            {% if listing.images.image1 %}
-                <img src="/media/{{ listing.images.image1 }}"/>
-            {% endif %}
-
-            {% if listing.images.image2 %}
-                <img src="/media/{{ listing.images.image2 }}"/>
-            {% endif %}
-
-            {% if listing.images.image3 %}
-                <img src="/media/{{ listing.images.image3 }}"/>
-            {% endif %}
-
-            {% if listing.images.image4 %}
-                <img src="/media/{{ listing.images.image4 }}"/>
-            {% endif %}
-
-        </div>
-
-        <a>TODO: Save/Love</a>
-
-            <!-- Descriptions  -->
-        <p>{{ listing.hourly_rate }}</p>
-        <p>{{ listing.day_rate }}</p>
-
-        <div>
-            {% if listing.overNight is True %}
-
-                <p>Overnight Parking: Yes</p>
+            <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    {% if listing.images.image1 %}
+                        <div class="carousel-item active">
+                            <img src="/media/{{ listing.images.image1 }}" class="d-block w-100" alt="...">
+                        </div>
+                    {% endif %}
+                    {% if listing.images.image2 %}
+                    <div class="carousel-item">
+                        <img src="/media/{{ listing.images.image2 }}" class="d-block w-100" alt="...">
+                    </div>
+                    {% endif %}
+                    {% if listing.images.image3 %}
+                    <div class="carousel-item">
+                        <img src="/media/{{ listing.images.image3 }}" class="d-block w-100" alt="...">
+                    </div>
+                    {% endif %}
+                    {% if listing.images.image4 %}
+                    <div class="carousel-item">
+                        <img src="/media/{{ listing.images.image4 }}" class="d-block w-100" alt="...">
+                    </div>
+                    {% endif %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+                </button>
+            </div>
             
-            {% else %}
-            
-                <p>Overnight Parking: No</p>
 
-            {% endif %}
+                <!-- Descriptions  -->
+            <div id="details" class="container">
+                <h2 id="typeDetail">{{ listing.parking}} hosted by {{ listing.lister.first_name }}</h2>
+                <hr />
+                <div id="panelView" class="d-flex justify-content-between">
+                    <div id="iconD">
+                        <div class="d-flex justify-content-start">
+                            {% if listing.overNight is True %}
+                                <i class="fas fa-moon"></i>
+                                <p>Overnight Parking: <b>Yes</b></p>
+                            
+                            {% else %}
+                                <i class="fas fa-moon"></i>
+                                <p>Overnight Parking: <b>No</b></p>
+
+                            {% endif %}
+                        </div>
+                        <div class="d-flex justify-content-start">
+                            {% if listing.parking_Pass is True %}
+                                <i class="fas fa-ticket-alt"></i>
+                                <p>Parking Pass Needed: <b>Yes</b></p>
+                        
+                            {% else %}
+                                <i class="fas fa-ticket-alt"></i>
+                                <p>Parking Pass Needed: <b>No</b></p>
+
+                            {% endif %}
+                        </div>
+                        <div class="d-flex justify-content-start">
+                            {% if listing.meet_Renter is True %}
+                                <i class="fas fa-handshake"></i>
+                                <p>Lister must be present when parking: <b>Yes</b></p>
+                        
+                            {% else %}
+                                <i class="fas fa-handshake"></i>
+                                <p>Lister must be present when parking: <b>No</b></p>
+
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div id="sideRate" class="rounded shadow d-flex flex-column justify-content-center align-items-center">
+                        <div id="pricingD">
+                            <p>${{ listing.hourly_Rate }} / hour</p>
+                            <p>${{ listing.day_Rate }} / day</p>
+                        </div>
+                        <div id="button">
+                            <button type="button" class="btn btn-danger btn-lg">Rent</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TODO: Map View Addition -->
+                <hr />
+                <h3 id="loc">Location </h3>
+                <div id="addressMain" class="d-flex justify-content-start">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <div>
+                        <p>{{ listing.address.address1 }}</p>
+                        <p>{{ listing.address.address2 }}</p>
+                        <p>{{ listing.address.city }}, {{ listing.address.state }} {{ listing.address.zip }}</p>
+                    </div>
+                </div>
+
+                <h2 id="detailDes">{{ listing.description }}</h2>
+                
+                <hr />
+            </div>
         </div>
-
-        <div>
-            {% if listing.parking_Pass is True %}
-
-                <p>Parking Pass Needed: Yes</p>
-        
-            {% else %}
-        
-                <p>Parking Pass Needed: No</p>
-
-            {% endif %}
-        </div>
-
-        <div>
-            {% if listing.meet_Renter is True %}
-
-                <p>Lister must be present when parking: Yes</p>
-        
-            {% else %}
-        
-                <p>Lister must be present when parking: No</p>
-
-            {% endif %}
-        </div>
-
-        <!-- TODO: Map View Addition -->
-        <h3>TODO: Address: </h3>
-        <p>{{ listing.address.address1 }}</p>
-        <p>{{ listing.address.address2 }}</p>
-
-        <h2>{{ listing.description }}</h2>
-
-
-        <p class="lead"><a class="btn btn-outline-light btn-lg" href="rent" role="button">Rent</a></p>
-
     </div>
 
 {% endblock content %}

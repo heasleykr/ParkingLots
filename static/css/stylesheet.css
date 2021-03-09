@@ -1,8 +1,10 @@
 :root {
     --blue: #178DBE;
-    --blueO: rgba(23, 141, 190, 0.85);
+    --blueO: rgba(173, 233, 233, 0.85);
     --navy: #116C92;
     --cubano: #008991;
+    --cubanoLight: #b2eae9;
+    --rust: #fe6306;
 }
 
 /* Nav Styling */
@@ -11,7 +13,7 @@ nav {
 }
 
 #navMain a {
-    color: #008991;
+    color: var(--cubano);
     font-family: 'Raleway', sans-serif;
     font-size: 1rem;
 }
@@ -21,6 +23,7 @@ nav {
     width: 90px;
     height: 60px;
     margin-left: 2rem;
+    margin-right: 2rem;
 }
 
 /* Main Content Div */
@@ -40,7 +43,8 @@ nav {
 
 /* Page Headers */
 #logo,
-#listingHead {
+#listingHead,
+#create1 {
     font-family: 'Rancho', cursive;
     color: white;
 }
@@ -53,11 +57,12 @@ nav {
 }
 
 /* Listings.html */
-#listingMain {
+#mainList {
     padding-top: 10rem;
 }
 
-#listingHead {
+#listingHead,
+#create1 {
     font-size: 8rem;
     display: flex;
     justify-content: center;
@@ -65,7 +70,144 @@ nav {
     padding-right: auto;
 }
 
-#listings2 {
-    padding-top: 36rem;
-    border-top: yellow;
+#filterTitle {
+    font-family: 'Raleway', sans-serif;
+    color: var(--cubanoLight);
+    size: 1.5rem;
+    padding-top: 3rem;
+    text-transform: uppercase;
+}
+
+#filterDiv {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    height: 7rem;
+    border: 1px solid white;
+    justify-content: center;
+}
+
+
+#gridList {
+    font-family: 'Raleway', sans-serif;
+    margin-top: 23rem;
+    padding-top: 4rem;
+    background-color: rgba(173, 233, 233, 0.85);
+}
+
+.listImg {
+    height: 200px;
+    width: auto;
+    margin-top: -2rem;
+}
+
+#rate {
+    font-size: .8rem;
+    justify-content: end;
+    background-color: var(--rust);
+    margin-left: 16rem;
+}
+
+#captionPanel {
+    margin-top: .5rem;
+}
+
+#listTitle {
+    margin: 1rem;
+    font-size: .9rem;
+}
+
+/* Single Listing */
+#singleListing {
+    background-color: white;
+    padding-top: 2rem;
+    font-family: 'Nunito', sans-serif;
+
+}
+
+#title {
+    color: var(--cubano);
+    margin-left: 3rem;
+}
+
+#titleSub {
+    padding-right: 3rem;
+}
+
+#titleSub i {
+    margin-right: .7rem;
+}
+
+#titleSub p {
+    text-decoration: underline;
+}
+
+#love {
+    color: var(--cubanoLight);
+    font-size: 1rem;
+    color: var(--rust);
+}
+
+#location {
+    color: var(--cubanoLight);
+    padding-left: 3rem;
+    padding-bottom: 2rem;
+    text-decoration: underline;
+}
+
+#typeDetail,
+#loc {
+    color: var(--cubano);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+#iconD,
+#addressMain {
+    color: var(--cubano);
+    font-size: 1.2rem;
+}
+
+#iconD i,
+#addressMain i {
+    margin-right: 1.3rem;
+    color: var(--rust);
+}
+
+#sideRate {
+    width: 19rem;
+    height: 15rem;
+    color: var(--rust);
+
+}
+
+#pricingD {
+    font-size: 1.4rem;
+    margin-bottom: .5rem;
+}
+
+#sideRate button {
+    width: 15rem;
+    background-color: var(--rust);
+}
+
+#detailDes {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.5rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    padding-bottom: 10em;
+}
+
+
+/* Create listings */
+#imagesCreate {
+    padding-top: 6rem;
+    padding-bottom: 20rem;
+    background-color: var(--blueO);
+
+}
+
+/* Footer */
+#footer {
+    background-image: url(../img/footer.jpeg)
 }

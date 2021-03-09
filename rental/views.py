@@ -24,51 +24,7 @@ class InboxView(ListView):
     model = Message
     template_name = 'bookings/inbox.html'
 
-#Display Single Message
-class MessageDetailView(DetailView):
-    model = Message
-    template_name = 'single_message.html'
 
-
-#Display all Listings from Database
-def send_Listings(request): 
-
-    #query DB and grab table data
-    listings = Listing.objects.all().values()
-
-    #variable declaration 
-    listing_Dictionary = {} #list to be packaged
-    i = 0 #increment element
-
-    for list in listings: #loop through listings
-
-        #Update Demical/Date/Time Objects for Serialization
-        list['day_Rate'] = str(list['day_Rate'])
-        list['hourly_Rate'] = str(list['hourly_Rate'])
-        list['date'] = str(list['date'])
-        list['time'] = str(list['time'])
-
-        #TODO: grab correct data in Address/Images
-        # address = list.address
-        # images = list.images
-
-        #Add to dictionary 
-        listing_Dictionary[i] = list
-
-        # increment counter
-        i += 1
-
-    # Serialize data 
-    dataJSON = json.dumps(listing_Dictionary, indent = 4)
-
-    #Write/Rewrite JSON to file
-    with open("static/all_listings.txt", "w") as outfile:
-        outfile.write(dataJSON)
-
-    # render & send to listings.js
-    return render(request, 'listings.html') 
-
-########### New Listing View #####################
 #renders all bookings for requested user
 def all_Listings(request):
 
@@ -80,6 +36,84 @@ def all_Listings(request):
 
     #send to listings.html
     return render(request,'all_listings.html', {'listings': list})
+
+#Sorts listings by Price
+def price_Listings(request):
+
+    if request.method == "GET":
+
+        #Query DB: grab all listings and sort ascending by hourly price
+        prices = Listing.objects.order_by('hourly_Rate')
+
+
+    #send to listings.html
+    return render(request,'all_listings.html', {'listings': prices})
+
+#Sorts listings by Parking Type
+def parking_Listings(request, parking_type):
+
+    if request.method == "GET":
+
+        if parking_type == "r":
+
+            #Query DB: grab all residential parking
+            parkinglist = Listing.objects.filter(parking='R')
+
+        elif parking_type == "g":
+
+            #Query DB: grab all residential parking
+            parkinglist = Listing.objects.filter(parking='G')
+
+        elif parking_type == "l":
+
+            #Query DB: grab all residential parking
+            parkinglist = Listing.objects.filter(parking='L')
+
+        elif parking_type == "s":
+
+            #Query DB: grab all residential parking
+            parkinglist = Listing.objects.filter(parking='S')
+
+        elif parking_type == "o":
+
+            #Query DB: grab all residential parking
+            parkinglist = Listing.objects.filter(parking='O')
+
+    #send to listings.html
+    return render(request,'all_listings.html', {'listings': parkinglist})
+
+#Sorts listings by Vehicle Accomidation
+def vehicle_Listings(request, vehicle_type):
+
+    if request.method == "GET":
+
+        if vehicle_type == "c":
+
+            #Query DB: grab all residential parking
+            vehiclelist = Listing.objects.filter(vehicles='C')
+
+        elif vehicle_type == "t":
+
+            #Query DB: grab all residential parking
+            vehiclelist = Listing.objects.filter(vehicles='T')
+
+        elif vehicle_type == "v":
+
+            #Query DB: grab all residential parking
+            vehiclelist = Listing.objects.filter(vehicles='V')
+
+        elif vehicle_type == "m":
+
+            #Query DB: grab all residential parking
+            vehiclelist = Listing.objects.filter(vehicles='M')
+
+        elif vehicle_type == "o":
+
+            #Query DB: grab all residential parking
+            vehiclelist = Listing.objects.filter(vehicles='O')
+
+    #send to listings.html
+    return render(request,'all_listings.html', {'listings': vehiclelist})
 
 #renders all bookings for requested user
 def all_Bookings(request):
