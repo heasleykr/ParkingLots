@@ -10,7 +10,7 @@
 
 
 {% block content %}
-    <div class="container" id="mainList">
+    <div id="mainList">
         <h1 id="listingHead">Parking</h1>
 
         <h3 class="d-flex justify-content-center" id="filterTitle">Sort by </h3>
@@ -44,12 +44,14 @@
                             <li><a class="dropdown-item" href="{% url 'listings_vehicle' 'm' %}" role="button">Motorcycles/Mopeds</a></li>
                             <li><a class="dropdown-item" href="{% url 'listings_vehicle' 'o' %}" role="button">Motorhomes/Oversized</a></li>
                         </ul>
+                    </div>
                 </div>
             </div>
         </div>
 
 
         <!-- Grid Layout -->
+        <div id="listColor">
             <div id="gridList" class="container">
                 <div class="row">
                     <h4>{{ listings.count }} results</h4>
@@ -76,6 +78,7 @@
                     {% endif %}        
                 {% endfor %}
             </div>
+        </div>
     </div>
   
 

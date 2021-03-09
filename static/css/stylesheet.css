@@ -1,10 +1,9 @@
 :root {
-    --blue: #178DBE;
-    --blueO: rgba(173, 233, 233, 0.85);
-    --navy: #116C92;
     --cubano: #008991;
     --cubanoLight: #b2eae9;
     --rust: #fe6306;
+    --brick: #ffac80;
+    --brick: #342a29;
 }
 
 /* Nav Styling */
@@ -28,12 +27,15 @@ nav {
 
 /* Main Content Div */
 #main_Back {
-    height: 900px;
     margin: 0;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    background-image: url(../img/cubano4.jpg)
+    background-image: url(../img/cubano4.jpg);
+}
+
+#input {
+    height: 150rem;
 }
 
 /* Home html */
@@ -81,17 +83,24 @@ nav {
 #filterDiv {
     margin-top: 2rem;
     padding-top: 2rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
     height: 7rem;
     border: 1px solid white;
     justify-content: center;
 }
 
+#listColor {
+    background-color: white;
+    margin-top: 3rem;
+    padding-bottom: 2rem;
+}
 
 #gridList {
     font-family: 'Raleway', sans-serif;
     margin-top: 23rem;
     padding-top: 4rem;
-    background-color: rgba(173, 233, 233, 0.85);
+    background-color: rgba(173, 233, 233, 0.95);
 }
 
 .listImg {
@@ -203,11 +212,12 @@ nav {
 #imagesCreate {
     padding-top: 6rem;
     padding-bottom: 20rem;
-    background-color: var(--blueO);
+    background-color: var(--rust);
 
 }
 
 /* Footer */
-#footer {
-    background-image: url(../img/footer.jpeg)
+#fwrapper {
+    height: 30rem;
+    background-color: var(--brick);
 }
