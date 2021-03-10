@@ -1,33 +1,46 @@
 <!-- templates/rentals/rental_request.html -->
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}ParkingLots Home{% endblock title %}
 
 {% block content %}
 <br>
-<div>
-    <h1 id="logo" class="display-4">ParkingLots </h1>
-    <p id="django" class="lead">Rental Requested!</p>
+<div id="requestedMain" class="d-flex">
+    <!-- Image left -->
+    <div>
+      <img id="dottedLine" src="{% static 'img/arrow2.png' %}" alt="">
+    </div>
 
-    {% if user.is_authenticated %}  
-        <p>Thanks for your rental request!</p>
-        <p>We'll notify you when the lister takes action on your request!</p>
-        <!-- TODO MAP HERE -->
+    <div id="confirmation" class="d-flex flex-column align-items-center">
+      <hr />
+      <h1 id="logo" class="display-4">ParkingLots </h1>
+      <p id="django" class="lead">Rental Requested!</p>
 
-        <p>Search for more rentals: </p>
-        <p class="lead"><a class="btn btn-outline-light btn-lg" href="{% url 'listings' %}" role="button">Search Listings</a></p>
+      {% if user.is_authenticated %}  
+          <p>Thanks for your rental request!</p>
+          <p>We'll notify you when the lister takes action on your request.</p>
 
-        <p>Home: </p>
-        <p class="lead"><a class="btn btn-outline-light btn-lg" href="{% url 'home' %}" role="button">Home</a></p>
-   
-    {% else %}
-      <p>Please login to see this page.</p>
-      <p><a href="{% url 'login' %}">Log In</a></p>
+          <p>Search for more rentals: </p>
+          <p class="lead"><a class="btn btn-outline-light btn-lg" href="{% url 'listings' %}" role="button">Search Listings</a></p>
 
-      <p>Not signed up? Register here: </p>
-      <p class="lead"><a class="btn btn-outline-light btn-lg" href="{% url 'signup' %}" role="button">Register Here</a></p>
-    {% endif %}
+          <i id="carRequest" class="fas fa-car"></i>
+    
+      {% else %}
+        <p>Please login to see this page.</p>
+        <p><a href="{% url 'login' %}">Log In</a></p>
 
+        <p>Not signed up? Register here: </p>
+        <p class="lead"><a class="btn btn-outline-light btn-lg" href="{% url 'signup' %}" role="button">Register Here</a></p>
+      {% endif %}
+    </div>
+
+    <!-- Image Right -->
+    <div class="d-flex flex-column justify-content-center align-items-end">
+      <img id="parkingIcon" src="{% static 'img/parkingsign.png' %}" 
+      alt="">
+      <i id="road" class="fas fa-road"></i>
+    </div>
 </div>
 
 {% endblock content %}

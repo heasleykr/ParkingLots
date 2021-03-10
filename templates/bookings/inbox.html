@@ -8,68 +8,66 @@
 
 
 {% block content %}
-<div id="list" class="container">
-    <h1 id="list_header" class="articleHeads">{{ user.first_name }}'s Inbox</h1>
+<div id="inboxMain">
+    <h1 id="inbox_header">{{ user.first_name }}'s Inbox</h1>
+
+
     {% if user.is_authenticated %} 
-        <h3>Sent Messages: </h3>
-        {% for message in object_list %}
-                <!-- Display only user's sent messages -->
-                    {% if message.sender == user %}
-                        <div id="card" class="card">
-                            <div id="header"
+        <div id="sentDiv">
+                <div class="d-flex justify-content-between">
+                    <h2 id="inboxHeader">Sent Messages</h2>
+                    <i class="fas fa-stream align-self-center"></i>
+                </div>
+            {% for message in object_list %}
+                    <!-- Display only user's sent messages -->
+                        {% if message.sender == user %}
+                            <div id="card2" class="card">
+                                <div id="headerInbox"
+                                class="card-header border-light bg-transparent">
+                                    <span id="{{ message.message_id }}" class="font-weight-bold">{{ message.listing.title }}</span>
+                                    <span id="userInbox">To: {{ message.receiver }} | {{ message.created_at }}</span>
+                                </div>
+                                <div id="card-bodyInbox" class="card-body bg-transparent">
+                                    <p>{{ message.msg_content }}</p>
+
+
+                                    <!-- TODO: Add links to single listing and booking -->
+                                    {% for rentalItem in message.message.all %}
+                                        <a class="btn btn-outline-info btn-sm"  href="{% url 'single_booking' rentalItem.rental_Item_id %}" role="button">Rental Request</a>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        {% endif %}
+            {% endfor %} 
+        </div>             
+        
+        <div id="receivedDiv">
+            <div class="d-flex justify-content-between">
+                <h2 id="receivedHeader">Received Messages</h2>
+                <i class="fas fa-stream align-self-center"></i>
+            </div>      
+            {% for message in object_list %}
+                <!-- Display only user's received messages -->
+                    {% if message.receiver == user %}
+                        <div id="cardRec" class="card">
+                            <div id="headerRec"
                             class="card-header border-light bg-transparent">
                                 <span id="{{ message.message_id }}" class="font-weight-bold">{{ message.listing.title }}</span>
-                                <span id="user">To: {{ message.receiver }} | {{ message.created_at }}</span>
+                                <span id="userRec">From: {{ message.sender }} | {{ message.created_at }}</span>
                             </div>
-                            <div id="card-body" class="card-body bg-transparent">
+                            <div id="card-bodyRec" class="card-body bg-transparent">
                                 <p>{{ message.msg_content }}</p>
-
-
                                 <!-- TODO: Add links to single listing and booking -->
-                                {% for rentalItem in message.message.all %}
-                                    <a class="btn btn-outline-info btn-sm"  href="{% url 'single_booking' rentalItem.rental_Item_id %}" role="button">Rental Request</a>
-                                {% endfor %}
 
-                            </div>
-                                <!-- Message Threads -->
-                            <div class="card-footer bg-transparent">
-                                {% for thread in message.threads.all %}
-                                    <p>
-                                        <span class="font-weight-bold">
-                                            {{ thread.author }}
-                                        </span>
-                                        {{ thread.comment }}
-                                    </p>
-                                {% endfor %}       
+                                {% for rentalItem in message.message.all %}
+                                    <a class="btn btn-outline-info btn-sm" href="{% url 'single_booking' rentalItem.rental_Item_id %}" role="button">Rental Request</a>
+                                {% endfor %}
                             </div>
                         </div>
                     {% endif %}
-        {% endfor %}               
-                        
-        <h3>Received Messages: </h3>
-        {% for message in object_list %}
-            <!-- Display only user's received messages -->
-                {% if message.receiver == user %}
-                    <div id="card" class="card">
-                        <div id="header"
-                        class="card-header border-light bg-transparent">
-                            <span id="{{ message.message_id }}" class="font-weight-bold">{{ message.listing.title }}</span>
-                            <span id="user">From: {{ message.sender }} | {{ message.created_at }}</span>
-                        </div>
-                        <div id="card-body" class="card-body bg-transparent">
-                            <p>{{ message.msg_content }}</p>
-                            <!-- TODO: Add links to single listing and booking -->
-
-                            {% for rentalItem in message.message.all %}
-                                <a class="btn btn-outline-info btn-sm" href="{% url 'single_booking' rentalItem.rental_Item_id %}" role="button">Rental Request</a>
-                            {% endfor %}
-                                
-                            
-                        </div>
-                            <!-- TODO: Message Thread/Article Comments? -->
-                    </div>
-                {% endif %}
-        {% endfor %}
+            {% endfor %}
+        </div>
     {% else %}
         <p>Please login to see this page.</p>
         <p><a href="{% url 'login' %}">Log In</a></p>

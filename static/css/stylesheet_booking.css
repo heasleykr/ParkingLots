@@ -1,0 +1,53 @@
+:root {
+    --cubano: #008991;
+    --cubanoLight: #b2eae9;
+    --rust: #fe6306;
+    --brick: #ffac80;
+    --brick: #342a29;
+}
+
+
+
+/* User Booking Inbox % Message Inbox */
+#bookingMain,
+#inboxMain {
+    background-color: var(--cubanoLight);
+    padding: 6rem;
+    font-family: 'Nunito', sans-serif;
+    padding-bottom: 9rem;
+}
+
+#bookingMain h1,
+#inboxMain h1 {
+    color: var(--cubano);
+}
+
+#bookingMain i,
+#inboxMain i {
+    color: white;
+    font-size: 2rem;
+    padding-right: 2rem;
+
+}
+
+#requestRentals,
+#sentDiv {
+    background-color: var(--cubano);
+    margin-top: 4rem;
+}
+
+#listerRentals,
+#receivedDiv {
+    background-color: var(--rust);
+    margin-top: 4rem;
+}
+
+#manage,
+#requestsHeader,
+#inboxHeader,
+#receivedHeader {
+    color: white;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 1.5rem;
+}

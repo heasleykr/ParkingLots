@@ -13,10 +13,14 @@
     <div id="mainList">
         <h1 id="listingHead">Parking</h1>
 
-        <h3 class="d-flex justify-content-center" id="filterTitle">Sort by </h3>
+        <!-- <h3 class="d-flex justify-content-center" id="filterTitle">Sort by </h3> -->
         <!-- Filter Options -->
         <div id="filterDiv" class="shadow-sm bg-dark bg-gradient rounded-pill">
-            <div id="filters" class="d-flex justify-content-around">
+            <div id="filters" class="d-flex justify-content-start">
+                <div class="d-flex justify-content-around">
+                    <h3 id="filterTitle">filter</h3>
+                    <i id="filterArrow" class="fas fa-chevron-right"></i>
+                </div>
                 <div id="filterDollar">
                     <p class="lead"><a class="btn btn-lg btn-secondary" href="{% url 'listings_prices' %}" role="button">Price (min-max)</a></p>
                 </div>
@@ -33,7 +37,7 @@
                     </ul>
                 </div>
                 <div id="filterV">
-                    <div class="dropdown" id="filterP">
+                    <div class="dropdown" id="filterVehicles">
                         <button class="btn btn-lg btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                             Vehicle
                           </button>

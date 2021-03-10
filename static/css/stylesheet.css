@@ -72,22 +72,38 @@ nav {
     padding-right: auto;
 }
 
+#filterDiv {
+    margin-top: 8rem;
+    padding-top: 1.7rem;
+    margin-left: 12rem;
+    margin-right: 12rem;
+    height: 6.5rem;
+    border: 1px solid white;
+    justify-content: center;
+}
+
 #filterTitle {
     font-family: 'Raleway', sans-serif;
     color: var(--cubanoLight);
-    size: 1.5rem;
-    padding-top: 3rem;
-    text-transform: uppercase;
+    size: 1rem;
+    padding-left: 3rem;
+    padding-top: .5rem;
 }
 
-#filterDiv {
-    margin-top: 2rem;
-    padding-top: 2rem;
-    margin-left: 4rem;
-    margin-right: 4rem;
-    height: 7rem;
-    border: 1px solid white;
-    justify-content: center;
+#filterArrow {
+    color: var(--rust);
+    margin-left: .5rem;
+    margin-right: .5rem;
+    font-size: 3rem;
+}
+
+#filterDollar {
+    margin-left: 3rem;
+}
+
+#filterP,
+#filterV {
+    margin-left: 3rem;
 }
 
 #listColor {
@@ -273,6 +289,41 @@ nav {
     margin-left: 25rem;
 }
 
+/* Rental Requested */
+#requestedMain {
+    margin-top: 8.5rem;
+    background-color: var(--rust);
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+#confirmation {
+    border-bottom: 4px dotted black;
+}
+
+#dottedLine {
+    width: 400px;
+    height: 400px;
+    margin-left: 2rem;
+}
+
+#carRequest {
+    margin-top: 1.5rem;
+    font-size: 6rem;
+    margin-left: -20rem;
+}
+
+#parkingIcon {
+    margin-top: 11rem;
+    height: 200px;
+    width: auto;
+    margin-left: 8rem;
+}
+
+#road {
+    font-size: 6rem;
+    margin-right: 1.3rem;
+}
 
 /* Create listings */
 #imagesCreate {
