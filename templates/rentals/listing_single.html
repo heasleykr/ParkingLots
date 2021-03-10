@@ -12,8 +12,11 @@
                 <p id="location">{{ listing.address.city }}, {{ listing.address.state }}</p>
 
                 <div id="love" class="d-flex justify-content-around">
-                    <i class="far fa-heart"></i>
-                    <p>Save</p>
+                    {% if loved %}
+                        <a id="lovedButtonDelete" href="{% url 'loved_remove' loved.loved_id %}" role="button"><i class="fas fa-heart"></i><p>Loved</p></a>
+                    {% else %}
+                        <a id="lovedButton" href="{% url 'loved_single' listing.listing_id %}" role="button"><i class="far fa-heart"></i><p>Save</p></a>
+                    {% endif %}
                 </div>
             </div>
 

@@ -1,0 +1,88 @@
+<!-- templates/bookings/loved_listings.html -->
+{% extends 'base.html' %}
+
+{% load static %}
+{% load fontawesome_5 %}
+{% fontawesome_5_static %}
+
+
+{% block title %}ParkingLots Listings{% endblock title %}
+
+
+{% block content %}
+    <div id="mainLoved">
+        <h1 id="lovedHead"><i class="far fa-heart"></i> Parking</h1>
+
+        <!-- Filter Options -->
+        <div id="filterDiv" class="shadow-sm bg-dark bg-gradient rounded-pill">
+            <div id="filters" class="d-flex justify-content-start">
+                <div class="d-flex justify-content-around">
+                    <h3 id="filterTitle">filter</h3>
+                    <i id="filterArrow" class="fas fa-chevron-right"></i>
+                </div>
+                <div id="filterDollar">
+                    <p class="lead"><a class="btn btn-lg btn-secondary" href="{% url 'listings_prices' %}" role="button">Price (min-max)</a></p>
+                </div>
+                <div class="dropdown" id="filterP">
+                    <button class="btn btn-lg btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Parking
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="{% url 'listings_parking' 'r' %}" role="button">Residential Parking</a></li>
+                        <li><a class="dropdown-item" href="{% url 'listings_parking' 'g' %}" role="button">Garage Parking</a></li>
+                        <li><a class="dropdown-item" href="{% url 'listings_parking' 'l' %}" role="button">Parking Lot</a></li>
+                        <li><a class="dropdown-item" href="{% url 'listings_parking' 's' %}" role="button">Street Parking</a></li>
+                        <li><a class="dropdown-item" href="{% url 'listings_parking' 'o' %}" role="button">Other/Misc. Parking</a></li>
+                    </ul>
+                </div>
+                <div id="filterV">
+                    <div class="dropdown" id="filterVehicles">
+                        <button class="btn btn-lg btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                            Vehicle
+                          </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                            <li><a class="dropdown-item" href="{% url 'listings_vehicle' 'c' %}" role="button">Compact/Sedan</a></li>
+                            <li><a class="dropdown-item" href="{% url 'listings_vehicle' 't' %}" role="button">Truck/SUV</a></li>
+                            <li><a class="dropdown-item" href="{% url 'listings_vehicle' 'v' %}" role="button">Van</a></li>
+                            <li><a class="dropdown-item" href="{% url 'listings_vehicle' 'm' %}" role="button">Motorcycles/Mopeds</a></li>
+                            <li><a class="dropdown-item" href="{% url 'listings_vehicle' 'o' %}" role="button">Motorhomes/Oversized</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Grid Layout -->
+        <div id="listColorLoved">
+            <div id="gridListLoved" class="container">
+                <div class="row">
+                    <h4>{{ listings.count }} results</h4>
+                {% for list in listings %}
+                    <!-- Place three rentals in a row --> 
+                            <div class="col-sm">
+                                <div class="badge" id="rateLoved">
+                                    <p>from <b>${{ list.hourly_Rate }}</b></p>
+                                    <p id="hourLoved">per hour</p>
+                                </div>
+                                <img class="rounded img-fluid listImg figure-caption" src="/media/{{ list.images.image1 }}"/>
+                                <div id="captionPanelLoved" class="d-inline-flex justify-content-between">
+                                    <h4 id="listTitleLoved" class="figure-caption">{{ list.title }}</h4>
+                                    <p class="lead"><a class="btn btn-outline-light btn-lg" href="{% url 'listing_single' list.listing_id %}" role="button">Rent</a></p>
+                                </div>
+                            </div>
+
+                    <!-- If last column close div/open new row -->
+                    {% if forloop.counter|divisibleby:3 and not forloop.last %}
+                        </div>
+                        <div class="row">
+                    {% elif forloop.last %}
+                        </div>
+                    {% endif %}        
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+  
+
+{% endblock content%}
