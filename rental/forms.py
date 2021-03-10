@@ -2,29 +2,21 @@ from django import forms
 from .models import Rental, Message, RentalItem
 from parking.models import Listing
 from multiselectfield import MultiSelectField
-# from bootstrap_datepicker_plus import DatePickerInput
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Fieldset, Div, HTML
+from crispy_forms.bootstrap import AppendedText, PrependedText
 
 
-'''
-Need:
-    A. Booking Form for Rental Request
-        1. Needs to Show listing
-        2. Needs to Show Date/Times Requesting
-        3. Needs to Show User Inputs for Vehicle Types
-        4. Needs to Show a Total Estimate 
-    B. Message Form:?? 
-        1. Needs to show rental request status
-        2. Needs to show listing
-        3. To be viewed in an inbox
 
-'''
+
 vehicle_choices = ((1, 'Compact/Sedan'),
                (2, 'Truck/SUV'),
                (3, 'Van'),
                (4, 'Motocycle/Moped'),
                (5, 'Motorhome or Oversized'))
 
-
+# FormActions for bootstrap
+    # css_class
 
 class RentalForm(forms.Form):
     """Form for Rental Request without Model"""
@@ -38,19 +30,32 @@ class RentalForm(forms.Form):
 
     duration = forms.IntegerField(label="How many hours will you need parking for? (One hour minimum)", max_value=24, min_value=1)
      
-    ############ Calendar Attempts ##################
-    
-    # date = forms.DateTimeField(
-    #     input_formats=['%d/%m/%Y %H:%M'],
-    #     widget=forms.DateTimeInput(attrs={
-    #         'class': 'form-control datetimepicker-input',
-    #         'data-target': '#datetimepicker1'
-    #     })
-    # )
-    # calendar = forms.SplitDateTimeField(widget=forms.SplitDateTimeWidget)
-    # calendar = forms.DateField(
-    #     widget=DatePickerInput(format='%m/%d/%Y')
-    # )
+    # Styling addition
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+            Fieldset(
+                'Hi, {{ user.username }}!',
+                Div(
+                    'vehicles',
+                    PrependedText('duration', 'hr/s'),
+                    css_id='grid1Rental'
+                ),
+                Div(
+                    Div(
+                        HTML("""
+                        <p><strong>When you need your spot?</strong></p>
+                        """),
+                        PrependedText('date', 'M/D/Y', placeholder="01/01/21", css_id='dateRental'),
+                        PrependedText('time', 'Hr:Min', placeholder="05:00", css_id='timeRental'),
+                        css_id='grid2Rental'
+                    ),
+                    'comment',
+                    css_id="grid3Rental"
+                )
+            )
+        )
 
 class MessageForm(forms.ModelForm):
     """Form for the Message model"""

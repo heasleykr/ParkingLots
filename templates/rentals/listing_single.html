@@ -96,8 +96,8 @@
                             <p>${{ listing.hourly_Rate }} / hour</p>
                             <p>${{ listing.day_Rate }} / day</p>
                         </div>
-                        <div id="button">
-                            <button type="button" class="btn btn-danger btn-lg">Rent</button>
+                        <div>
+                            <p class="lead"><a id="rentButton1" class="btn btn-danger btn-lg" href="{% url 'rent_listing' listing.listing_id %}" role="button">Rent</a></p>
                         </div>
                     </div>
                 </div>
@@ -117,6 +117,11 @@
                 <h2 id="detailDes">{{ listing.description }}</h2>
                 
                 <hr />
+
+                <div id="backList" class="d-flex justify-content-around">
+                    <p class="lead"><a class="btn btn-outline-info" href="{% url 'listings' %}" role="button">Back to Listings</a></p>
+                    <p class="lead"><a id="rentButton2" class="btn btn-danger btn-lg" href="{% url 'rent_listing' listing.listing_id %}" role="button">Rent</a></p>
+                </div>
             </div>
         </div>
     </div>

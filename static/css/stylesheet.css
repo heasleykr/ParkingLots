@@ -125,38 +125,45 @@ nav {
     font-size: .9rem;
 }
 
-/* Single Listing */
-#singleListing {
+/* Single Listing & Rental Combo */
+#singleListing,
+#rentalListing {
     background-color: white;
     padding-top: 2rem;
     font-family: 'Nunito', sans-serif;
 
 }
 
-#title {
+#title,
+#titleRental {
     color: var(--cubano);
     margin-left: 3rem;
 }
 
-#titleSub {
+#titleSub,
+#titleSubRental {
     padding-right: 3rem;
 }
 
-#titleSub i {
+#titleSub i,
+#titleSubRental i {
     margin-right: .7rem;
 }
 
-#titleSub p {
+#titleSub p,
+#titleSubRental p {
     text-decoration: underline;
 }
 
-#love {
+#love,
+#loveRental {
     color: var(--cubanoLight);
     font-size: 1rem;
     color: var(--rust);
 }
 
-#location {
+#location,
+#locationRental {
     color: var(--cubanoLight);
     padding-left: 3rem;
     padding-bottom: 2rem;
@@ -164,47 +171,106 @@ nav {
 }
 
 #typeDetail,
-#loc {
+#typeDetailRental,
+#loc,
+#locRental {
     color: var(--cubano);
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
 
 #iconD,
-#addressMain {
+#iconDRental,
+#addressMain,
+#addressMainRental {
     color: var(--cubano);
     font-size: 1.2rem;
 }
 
 #iconD i,
-#addressMain i {
+#iconDRental i,
+#addressMain i,
+#addressMainRental i {
     margin-right: 1.3rem;
     color: var(--rust);
 }
 
-#sideRate {
+#sideRate,
+#sideRateRental {
     width: 19rem;
     height: 15rem;
     color: var(--rust);
 
 }
 
-#pricingD {
+#pricingD,
+#pricingDRental {
     font-size: 1.4rem;
     margin-bottom: .5rem;
 }
 
-#sideRate button {
+#rentButton1,
+#rentButton2 {
     width: 15rem;
     background-color: var(--rust);
 }
 
-#detailDes {
+#detailDes,
+#detailDesRental {
     font-family: 'Raleway', sans-serif;
     font-size: 1.5rem;
     margin-top: 3rem;
-    margin-bottom: 3rem;
-    padding-bottom: 10em;
+    margin-bottom: 7rem;
+}
+
+#backList,
+#backListRental {
+    color: var(--rust);
+    margin: 3rem;
+    margin-bottom: 4rem;
+    padding-bottom: 10rem;
+}
+
+/* Rental Request Form */
+#rentalFormDiv {
+    background-color: var(--rust);
+    padding-top: 2rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-bottom: 2rem;
+}
+
+#grid1Rental,
+#grid3Rental {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 1rem;
+    color: white;
+}
+
+#grid2Rental {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
+#dateRental {
+    margin-right: 13rem;
+}
+
+#timeRental {
+    margin-left: 12rem;
+}
+
+#rentalButton {
+    display: flex;
+    justify-content: space-around;
+    padding-left: 6rem;
+    padding-right: 6rem;
+    background-color: var(--cubano);
+    margin-top: 2rem;
+    margin-left: 25rem;
 }
 
 
@@ -219,5 +285,41 @@ nav {
 /* Footer */
 #fwrapper {
     height: 30rem;
-    background-color: var(--brick);
+    background-image: url(../img/footer.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: bottom;
+}
+
+#grid1 {
+    margin-top: 2rem;
+}
+
+#grid2 {
+    color: var(--rust);
+    margin-right: 1rem;
+}
+
+#grid2 i {
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+
+#grid3 {
+    color: var(--rust);
+    margin-right: 2.7rem;
+}
+
+#grid3 a {
+    color: var(--rust);
+    font-family: 'Raleway', sans-serif;
+    margin: 2rem;
+
+}
+
+#grid4 {
+    margin-top: 17rem;
+    margin-left: 5rem;
+    color: var(--rust);
+    font-family: 'Raleway', sans-serif;
 }

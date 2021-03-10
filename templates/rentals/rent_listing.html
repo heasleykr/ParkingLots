@@ -10,82 +10,135 @@
 {% block title %}ParkingLots Home{% endblock title %}
 
 {% block content %}
+<div id="rentalMain">
 
-    <div class="jumbotron">
+    <div id="rentalListing">
+        <div id="cardViewRental">
+            <h2 id="titleRental">{{ listing.title}}</h2>
+            <div id="titleSubRental" class="d-flex justify-content-between">
+                <p id="locationRental">{{ listing.address.city }}, {{ listing.address.state }}</p>
 
-        <h1>RENT ME, postively brilliant!</h1>
-        <hr />
-        <h2>{{ listing.title }}</h2>
-        <p>{{ listing.listing_id }}</p>
-        <p>{{ listing.description }}</p>
-        
-        <!-- TODO: Load Images -->
-        <h3>{{ listing.images_id }}</h3>
+                <div id="loveRental" class="d-flex justify-content-around">
+                    <i class="far fa-heart"></i>
+                    <p>Save</p>
+                </div>
+            </div>
 
-        <a>TODO: Save/Love</a>
-
-            <!-- Descriptions  -->
-        <p>{{ listing.hourly_rate }}</p>
-        <p>{{ listing.day_rate }}</p>
-
-        <div>
-            {% if listing.overNight is True %}
-
-                <p>Overnight Parking: Yes</p>
+            <!-- Rental Form Input -->
+            <div id="rentalFormDiv">
+                <form id="rentalForm" method="post">
+                    {% csrf_token %}
+                    {% crispy rental_form %}
+                    <input id="rentalButton" class="btn btn-outline-light btn-lg" type="submit" value="Rent"></input>
+                </form>
+            </div>
             
-            {% else %}
-            
-                <p>Overnight Parking: No</p>
 
-            {% endif %}
+                <!-- Descriptions  -->
+            <div id="detailsRental" class="container">
+                <h2 id="typeDetailRental">{{ listing.parking}} hosted by {{ listing.lister.first_name }}</h2>
+                <hr />
+                <div id="panelViewRental" class="d-flex justify-content-between">
+                    <div id="iconDRental">
+                        <div class="d-flex justify-content-start">
+                            {% if listing.overNight is True %}
+                                <i class="fas fa-moon"></i>
+                                <p>Overnight Parking: <b>Yes</b></p>
+                            
+                            {% else %}
+                                <i class="fas fa-moon"></i>
+                                <p>Overnight Parking: <b>No</b></p>
+
+                            {% endif %}
+                        </div>
+                        <div class="d-flex justify-content-start">
+                            {% if listing.parking_Pass is True %}
+                                <i class="fas fa-ticket-alt"></i>
+                                <p>Parking Pass Needed: <b>Yes</b></p>
+                        
+                            {% else %}
+                                <i class="fas fa-ticket-alt"></i>
+                                <p>Parking Pass Needed: <b>No</b></p>
+
+                            {% endif %}
+                        </div>
+                        <div class="d-flex justify-content-start">
+                            {% if listing.meet_Renter is True %}
+                                <i class="fas fa-handshake"></i>
+                                <p>Lister must be present when parking: <b>Yes</b></p>
+                        
+                            {% else %}
+                                <i class="fas fa-handshake"></i>
+                                <p>Lister must be present when parking: <b>No</b></p>
+
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div id="sideRateRental" class="rounded shadow d-flex flex-column justify-content-center align-items-center">
+                        <div id="pricingDRental">
+                            <p>${{ listing.hourly_Rate }} / hour</p>
+                            <p>${{ listing.day_Rate }} / day</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TODO: Map View Addition -->
+                <hr />
+                <h3 id="locRental">Location </h3>
+                <div id="addressMainRental" class="d-flex justify-content-start">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <div>
+                        <p>{{ listing.address.address1 }}</p>
+                        <p>{{ listing.address.address2 }}</p>
+                        <p>{{ listing.address.city }}, {{ listing.address.state }} {{ listing.address.zip }}</p>
+                    </div>
+                </div>
+
+                <h2 id="detailDesRental">{{ listing.description }}</h2>
+                
+                <hr />
+
+                <div id="carouselExampleControlsRental" class="carousel carousel-dark slide container" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        {% if listing.images.image1 %}
+                            <div class="carousel-item active">
+                                <img src="/media/{{ listing.images.image1 }}" class="d-block w-100" alt="...">
+                            </div>
+                        {% endif %}
+                        {% if listing.images.image2 %}
+                        <div class="carousel-item">
+                            <img src="/media/{{ listing.images.image2 }}" class="d-block w-100" alt="...">
+                        </div>
+                        {% endif %}
+                        {% if listing.images.image3 %}
+                        <div class="carousel-item">
+                            <img src="/media/{{ listing.images.image3 }}" class="d-block w-100" alt="...">
+                        </div>
+                        {% endif %}
+                        {% if listing.images.image4 %}
+                        <div class="carousel-item">
+                            <img src="/media/{{ listing.images.image4 }}" class="d-block w-100" alt="...">
+                        </div>
+                        {% endif %}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsRental"  data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsRental"  data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
+                <div id="backListRental" class="d-flex justify-content-around">
+                    <p class="lead"><a class="btn btn-outline-info" href="{% url 'listings' %}" role="button">Back to Listings</a></p>
+                </div>
+            </div>
         </div>
-
-        <div>
-            {% if listing.parking_Pass is True %}
-
-                <p>Parking Pass Needed: Yes</p>
-        
-            {% else %}
-        
-                <p>Parking Pass Needed: No</p>
-
-            {% endif %}
-        </div>
-
-        <div>
-            {% if listing.meet_Renter is True %}
-
-                <p>Lister must be present when parking: Yes</p>
-        
-            {% else %}
-        
-                <p>Lister must be present when parking: No</p>
-
-            {% endif %}
-        </div>
-
-        <!-- TODO: Map View Addition -->
-        <h3>TODO: Address: </h3>
-        <p>{{ listing.address.address1 }}</p>
-        <p>{{ listing.address.address2 }}</p>
-
-        <h2>{{ listing.description }}</h2>
-
-
-
-        <!-- User Form Input -->
-        <form id="'datetimepicker2'" method="post">
-            {% csrf_token %}
-            {{ rental_form }}
-            <input class="btn btn-outline-success" type="submit" value="Rent"></input>
-        </form>
-
-        <p class="lead"><a class="btn btn-outline-light btn-lg" href="{% url 'listings' %}" role="button">Back to Rentals</a></p>
-
-       
-       
-
     </div>
+</div>
+
 
 
 {% endblock content %}

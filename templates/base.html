@@ -85,29 +85,22 @@
     </main>
     <div id="fwrapper">
         <footer id="footer">
-            <a class="navbar-brand" href="{% url 'home' %}">
-                <img id="parkingLogo" src="{% static 'img/logoFinalTeal.png' %}" alt="">
-            </a>
-            <div id="wrapper">
-                <div id="grid1">
-                    <p id="footName">ParkingLots</p>
-                    <i class="fab fa-twitter"></i>
-                    <i class="fab fa-pinterest-square"></i>
-                    <i class="fab fa-instagram"></i>
-                </div>
-                <div id="grid2">
-                    <p>Address :</p>
-                    <p>Av. University 245-k 25896</p> 
-                </div>
-                <div id="grid3">
-                    <p>Hours :</p>
-                    <p>Monday to Friday from 8:00 am to 5:00pm</p>
-                </div>
-                <div id="grid4">
-                    <p id="link"><a href="{% url 'home' %}">Home: The Fashion Pet</a></p>
-                    <p id="register"><a href="{% url 'home' %}">Register</a></p>
-                    <p id="copyright">Copyright reserved &copy; 2020 Katelynn Heasley</p>
-                </div>
+            <div id="grid1" class="d-flex justify-content-center">
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <img id="parkingLogo" src="{% static 'img/logoFinalTeal.png' %}" alt="">
+                </a>
+            </div>
+            <div id="grid2" class="d-flex justify-content-center">
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-pinterest-square"></i>
+                <i class="fab fa-instagram"></i>
+            </div>
+            <div id="grid3" class="d-flex justify-content-center">
+                <p id="link"><a href="{% url 'listings' %}">Find Parking</a></p>
+                | <p id="register"><a href="{% url 'signup' %}">Register</a></p>
+            </div>
+            <div id="grid4" class="d-flex justify-content-start">
+                <p id="copyright">Copyright reserved &copy; 2021 Katelynn Heasley</p>
             </div>
         </footer>
     </div>
