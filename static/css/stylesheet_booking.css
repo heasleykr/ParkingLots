@@ -51,3 +51,216 @@
     padding-bottom: 2rem;
     padding-left: 1.5rem;
 }
+
+/* Create Listings */
+#createWrapper {
+    background-color: var(--rust);
+}
+
+#listingCreateDiv {
+    padding-top: 6rem;
+    padding-bottom: 20rem;
+    background-color: white;
+}
+
+#create2 {
+    font-family: 'Rancho', cursive;
+    color: var(--rust);
+}
+
+#p_v_middle,
+#rateSide,
+#overNightSide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Nunito', sans-serif;
+    color: black;
+}
+
+#p_v_middle i,
+#rateSide i,
+#overNightSide i,
+#descripSide i {
+    color: var(--rust);
+    font-size: 3rem;
+    margin-top: 1rem;
+    margin-left: 3rem;
+}
+
+#listingUpload2 {
+    font-size: 1.3rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+#listingUpload3 {
+    margin-left: 3rem;
+
+}
+
+#listingUpload3 i {
+    margin-left: 7rem;
+}
+
+
+#p_v_left,
+#p_v_right,
+#rateInput {
+    padding: 2rem;
+    border: 1px solid var(--rust);
+}
+
+#rateInput {
+    margin-left: 6rem;
+}
+
+#p_v_middle {
+    color: var(--cubano);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: white;
+    ;
+}
+
+#p_v_middle i {
+    padding: 1rem;
+}
+
+#listingUpload4 {
+    color: black;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--rust);
+    padding-top: 1rem;
+    margin-bottom: 4rem;
+    padding-right: 1rem;
+}
+
+#peopleIcon {
+    color: white;
+    size: 1rem;
+    margin-top: .8rem;
+    margin-left: 2rem;
+}
+
+.radioOptions {
+    color: black;
+}
+
+#descripSide {
+    color: black;
+    font-size: 1rem;
+    margin-left: 22rem;
+}
+
+#descripSide i {
+    margin-left: 12rem;
+}
+
+#btnListing {
+    margin-top: 4rem;
+    margin-left: 31rem;
+}
+
+
+#addressDivMain,
+#listingUpload2,
+#listingUpload3,
+#listingUpload4 {
+    display: flex;
+    margin-top: 4rem;
+}
+
+#addressDiv1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 8rem;
+}
+
+#addressDiv2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Nunito', sans-serif;
+    margin-left: 17rem;
+    color: black;
+}
+
+#addressDiv2 i {
+    color: var(--rust);
+    font-size: 7rem;
+    margin-top: 1rem;
+    margin-left: 3rem;
+}
+
+/* Listing Preview! */
+#previewWrapper {
+    background-color: white;
+    padding-bottom: 15rem;
+}
+
+#previewIntro {
+    padding-left: 4rem;
+}
+
+#previewBottom {
+    padding: 3rem;
+    margin-bottom: 10rem;
+}
+
+/* Image Upload Crispy Form */
+#imagesCreate {
+    padding-top: 6rem;
+    padding-bottom: 20rem;
+    background-color: var(--rust);
+}
+
+#imgDiv,
+#createDiv2 {
+    border-bottom: 1px solid white;
+    margin-bottom: 3rem;
+}
+
+#imgDiv i,
+#createDiv2 {
+    color: var(--cubano);
+    font-size: 2rem;
+
+}
+
+#imgDiv2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#imgIntro {
+    color: black;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.9rem;
+    padding-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+#upload1,
+#upload2 {
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+
+}
+
+#btnImg {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+}
+
+#filterArrowImg {
+    color: black;
+    margin-top: 1rem;
+    font-size: 3rem;
+}

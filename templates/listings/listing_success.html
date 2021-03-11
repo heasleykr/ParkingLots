@@ -1,21 +1,28 @@
 <!-- templates/listings/listing_success.html -->
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}ParkingLots{% endblock title %}
 
 {% block content %}
-  <h1>Listing Successfully Posted!</h1>
-  <hr />
-  <h2>What are the next steps:</h2>
-  <h3>When your listing is booked, we will notify you via notification. You can message the renter, accept/decline the booking, or manage the rental with ParkingLots.</h3>
-
-  <h4>Listing Links</h4>
-  <ul>
-      <li>Manage Bookings</li>
-      <li>Manage Listing Dates</li>
-      <li>Message Inbox</li>
-      <li>Manage Listing</li>
-  </ul>
-  <a href="{% url 'home'%}">Click here to return home.</a>
+  <br>
+  <div id="successMain" class="d-flex justify-content-between">
+      <!-- Image left -->
+      <div class="pl-3 pr-3">
+        <img id="dottedLineSuccess" src="{% static 'img/arrow2.png' %}" alt="">
+      </div>
   
+      <div id="confirmationSuccess" class="d-flex flex-column justify-content-center mr-5">
+        <hr />
+        <h1 id="logoSuccess" class="display-4">ParkingLots </h1>
+        <h1 id="djangoSuccess" class="lead"><h1>Listing Successfully Posted!</h1>
+  
+        <p>What are the next steps:</p>
+        <h3 class="mb-5">When your listing is booked, we will notify you via notification! You can message the renter, accept/decline the booking, or manage the rental with ParkingLots.</h3> 
+  
+            <p class="lead"><a class="btn btn-outline-light btn-lg" href="{% url 'listings' %}" role="button">Search Listings</a></p>
+  
+            <i id="carRequestSuccess" class="fas fa-car"></i>
+      </div>
+  </div>
 {% endblock %}

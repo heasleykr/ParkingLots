@@ -66,10 +66,10 @@
                                     <p>from <b>${{ list.hourly_Rate }}</b></p>
                                     <p id="hour">per hour</p>
                                 </div>
-                                <img class="rounded img-fluid listImg figure-caption" src="/media/{{ list.images.image1 }}"/>
+                                <img class="rounded img-fluid listImg figure-caption shadow" src="/media/{{ list.images.image1 }}"/>
                                 <div id="captionPanel" class="d-inline-flex justify-content-between">
                                     <h4 id="listTitle" class="figure-caption">{{ list.title }}</h4>
-                                    <p class="lead"><a class="btn btn-outline-light btn-lg" href="{% url 'listing_single' list.listing_id %}" role="button">Rent</a></p>
+                                    <p class="lead"><a class="btn btn-info btn-lg" href="{% url 'listing_single' list.listing_id %}" role="button">Rent</a></p>
                                 </div>
                             </div>
 

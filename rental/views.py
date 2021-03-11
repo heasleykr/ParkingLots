@@ -117,32 +117,35 @@ def loved_Listings(request):
     if request.method == "GET":
 
         # Query DB: grab all LovedRentals by user
-        loved = LovedRentals.objects.filter(user=request.user)
+        loved_list = LovedRentals.objects.filter(user=request.user)
+
+        # filter listings by loved
+        # loved_listings = Listing.object.filter()
 
     # send to listings.html
-    return render(request, 'loved_listings.html', {'listings': loved})
+    return render(request, 'bookings/loved_listings.html', {'loved': loved_list})
 
 
 # Saves listing for requested user to LovedRentals
 def save_Loved(request, listing_id):
 
-    if request.method == "POST":
+    if request.method == "GET":
         # create Loved object
         new_loved = LovedRentals()
-        new_loved.listing = Listings.objects.get(pk=listing_id)
+        new_loved.listing = Listing.objects.get(pk=listing_id)
         new_loved.user = request.user
 
         # Save Object to Database
-        love = new_loved.save()
+        new_loved.save()
 
     # send to listings.html
-    return render(request, 'rentals/listing_single.html', {'listing': new_loved.listing, 'loved': love})
+    return render(request, 'rentals/listing_single.html', {'listing': new_loved.listing, 'loved': new_loved})
 
 
 # Removes saved listing from requested users LovedRentals
 def remove_Loved(request, loved_id):
 
-    if request.method == "POST":
+    if request.method == "GET":
         # grab Loved & Listings objects
         loved = LovedRentals.object.get(pk=loved_id)
         single_listing = loved.listing

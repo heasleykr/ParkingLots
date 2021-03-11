@@ -5,29 +5,39 @@
 {% block title %}Create Listing{% endblock title %}
 
 {% block content %}
-<div>
-    <h1>Create Listing: Page 2 </h1>
+<div id="createWrapper">
+    <div id="listingCreateDiv" class="container">
+        <h1 id="create2">Create Listing</h1>
 
-    {% if user.is_authenticated %}  
+        <div id="createDiv2" class="d-flex justify-content-around">
+            <i class="fas fa-car"></i>
+            <p id="imgIntro" class="d-flex justify-content-center">Now let's add the details.. </p>
+            <i class="fas fa-car"></i>
+        </div>
 
-        <h3>Two in One Trial</h3>
-        
-        <form id="{{ img_pk }}" method="post">
-            {% csrf_token %}
-            {{ address_form }}
-            {{ listing_form }}
-            <input class="btn btn-outline-success" type="submit" value="Submit">Listing Preview!</input>
-        </form>
+        <div class="progress">
+            <div class="progress-bar bg-info" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">Step 2</div>
+        </div>
+
+        {% if user.is_authenticated %}  
+            
+            <form id="{{ img_pk }}" method="post">
+                {% csrf_token %}
+                {% crispy address_form %}
+                {% crispy listing_form %}
+            </form>
 
 
-    {% else %}
-      <p>Please login to see this page.</p>
-      <p><a href="{% url 'login' %}">Log In</a></p>
+        {% else %}
 
-      <p>Not signed up? Register here: </p>
-      <p class="lead"><a class="btn btn-outline-light btn-lg" href="{% url 'signup' %}" role="button">Register Here</a></p>
-    {% endif %}
+        <p>Please login to see this page.</p>
+        <p><a href="{% url 'login' %}">Log In</a></p>
 
+        <p>Not signed up? Register here: </p>
+        <p class="lead"><a class="btn btn-outline-light btn-lg" href="{% url 'signup' %}" role="button">Register Here</a></p>
+        {% endif %}
+
+    </div>
 </div>
 
 {% endblock content %}

@@ -18,7 +18,6 @@ nav {
 }
 
 #parkingLogo {
-    /* size: 1rem; */
     width: 90px;
     height: 60px;
     margin-left: 2rem;
@@ -45,26 +44,58 @@ nav {
 
 /* Page Headers */
 #logo,
+#logoSuccess,
 #listingHead,
-#create1 {
+#create1,
+#lovedHead {
     font-family: 'Rancho', cursive;
     color: white;
 }
 
 #map {
     height: 400px;
-    /* The height is 400 pixels */
     width: 100%;
-    /* The width is the width of the web page */
 }
 
-/* Listings.html % loved_listings.html */
-#mainList {
+/* Loved */
+#lovedHead {
+    color: var(--cubano);
+    padding-bottom: 4rem;
+    border-bottom: 3px solid var(--cubano);
+}
+
+#listColorLoved {
+    background-color: white;
+    border-bottom: 3px solid white;
+}
+
+#loveResults {
+    color: var(--cubano);
+    font-size: 2rem;
+    padding-bottom: 3rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--rust);
+}
+
+#gridListLoved {
+    font-family: 'Raleway', sans-serif;
+    margin-top: 1rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    background-color: white;
+}
+
+
+/* Listings.html % loved_listings.html*/
+#mainList,
+#mainLoved {
     padding-top: 10rem;
 }
 
 #listingHead,
-#create1 {
+#lovedHead,
+#create1,
+#create2 {
     font-size: 8rem;
     display: flex;
     justify-content: center;
@@ -125,25 +156,37 @@ nav {
     margin-top: -2rem;
 }
 
-#rate {
+#rate,
+#rateLoved {
     font-size: .8rem;
     justify-content: end;
     background-color: var(--rust);
     margin-left: 16rem;
 }
 
-#captionPanel {
+#captionPanel,
+#captionPanelLoved {
     margin-top: .5rem;
 }
 
-#listTitle {
-    margin: 1rem;
-    font-size: .9rem;
+#captionPanel a,
+#captionPanelLoved a {
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
-/* Single Listing & Rental Combo */
+#listTitle,
+#listTitleLoved {
+    margin: 1rem;
+    margin-right: 6rem;
+    margin-bottom: 6rem;
+    font-size: 1.3rem;
+}
+
+/* Single Listing & Rental Combo & listing_preview.html */
 #singleListing,
-#rentalListing {
+#rentalListing,
+#previewListing {
     background-color: white;
     padding-top: 2rem;
     font-family: 'Nunito', sans-serif;
@@ -151,35 +194,41 @@ nav {
 }
 
 #title,
-#titleRental {
+#titleRental,
+#titlePreview {
     color: var(--cubano);
     margin-left: 3rem;
 }
 
 #titleSub,
-#titleSubRental {
+#titleSubRental,
+#titleSubPreview {
     padding-right: 3rem;
 }
 
 #titleSub i,
-#titleSubRental i {
+#titleSubRental i,
+#titleSubPreview i {
     margin-right: .7rem;
 }
 
 #titleSub p,
+#titleSubRental p,
 #titleSubRental p {
     text-decoration: underline;
 }
 
 #love,
-#loveRental {
+#loveRental,
+#lovePreview {
     color: var(--cubanoLight);
     font-size: 1rem;
     color: var(--rust);
 }
 
 #location,
-#locationRental {
+#locationRental,
+#locationPreview {
     color: var(--cubanoLight);
     padding-left: 3rem;
     padding-bottom: 2rem;
@@ -188,8 +237,10 @@ nav {
 
 #typeDetail,
 #typeDetailRental,
+#typeDetailPreview,
 #loc,
-#locRental {
+#locRental,
+#locPreview {
     color: var(--cubano);
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -197,22 +248,27 @@ nav {
 
 #iconD,
 #iconDRental,
+#iconDPreview,
 #addressMain,
-#addressMainRental {
+#addressMainRental,
+#addressMainPreview {
     color: var(--cubano);
     font-size: 1.2rem;
 }
 
 #iconD i,
 #iconDRental i,
+#iconDPreview i,
 #addressMain i,
-#addressMainRental i {
+#addressMainRental i,
+#addressMainPreview i {
     margin-right: 1.3rem;
     color: var(--rust);
 }
 
 #sideRate,
-#sideRateRental {
+#sideRateRental,
+#sideRatePreview {
     width: 19rem;
     height: 15rem;
     color: var(--rust);
@@ -220,19 +276,22 @@ nav {
 }
 
 #pricingD,
-#pricingDRental {
+#pricingDRental,
+#pricingDPreview {
     font-size: 1.4rem;
     margin-bottom: .5rem;
 }
 
 #rentButton1,
-#rentButton2 {
+#rentButton2,
+#rentButton1Preview {
     width: 15rem;
     background-color: var(--rust);
 }
 
 #detailDes,
-#detailDesRental {
+#detailDesRental,
+#detailDesPreview {
     font-family: 'Raleway', sans-serif;
     font-size: 1.5rem;
     margin-top: 3rem;
@@ -290,47 +349,45 @@ nav {
 }
 
 /* Rental Requested */
-#requestedMain {
+#requestedMain,
+#successMain {
     margin-top: 8.5rem;
     background-color: var(--rust);
     padding-top: 5rem;
     padding-bottom: 5rem;
 }
 
-#confirmation {
+#confirmation,
+#confirmationSuccess {
     border-bottom: 4px dotted black;
 }
 
-#dottedLine {
+#dottedLine,
+#dottedLineSuccess {
     width: 400px;
     height: 400px;
     margin-left: 2rem;
 }
 
-#carRequest {
+#carRequest,
+#carRequestSuccess {
     margin-top: 1.5rem;
     font-size: 6rem;
     margin-left: -20rem;
 }
 
-#parkingIcon {
+#parkingIcon,
+#parkingIconSuccess {
     margin-top: 11rem;
     height: 200px;
     width: auto;
     margin-left: 8rem;
 }
 
-#road {
+#road,
+#roadSuccess {
     font-size: 6rem;
     margin-right: 1.3rem;
-}
-
-/* Create listings */
-#imagesCreate {
-    padding-top: 6rem;
-    padding-bottom: 20rem;
-    background-color: var(--rust);
-
 }
 
 /* Footer */
