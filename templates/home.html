@@ -1,25 +1,66 @@
 <!-- templates/home.html -->
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}ParkingLots Home{% endblock title %}
 
 {% block content %}
-<br>
 <div id="homeView">
-    <h1 id="logo" class="display-4">ParkingSpots </h1>
-    <p id="django" class="lead">A Parking RentalWebsite Built with Django</p>
 
-    {% if user.is_authenticated %}  
-        <!-- TODO MAP HERE -->
-        <h3>Map VIEW</h3>
-        <p class="lead"><a class="btn btn-outline-light btn-lg" href="{% url 'map' %}" role="button">Map View</a></p>
+
+    <!-- Logged In View -->
+    {% if user.is_authenticated %}
+    <h4 id="introTopHome2" class="display-4 d-flex justify-content-center"></h4>
+    <div id="homeDivMain2" class="d-flex flex-column justify-content-center"> 
+        <div id="homeTopDiv2" class="d-flex justify-content-center flex-shrink-1">
+            <div id="homeLeftDiv2" class="d-flex flex-column align-items-center"></div>
+
+            <div id="homeCenterDiv2" class="d-flex flex-column flex-grow-1 w-100 align-items-center">
+                <img id="parkingLogoHome2" src="{% static 'img/logoFinalWhite.png' %}" alt="">
+                <h4 id="homeBack">Welcome back</h4>
+                <h2 id="homeBack2">Need parking, {{ user.first_name }}?</h2>
+                <p class="lead"><a id="homeRegister2" class="btn btn-danger btn-lg btn-lg" href="{% url 'listings' %}" role="button">Find parking now</a></p>
+
+                <p class="lead"><a id="homeLogout" class=" btn btn-outline-light" href="{% url 'logout' %}">Log Out</a></p>
+            </div>
+
+            <div id="homeRightDiv2" class="d-flex flex-column align-items-center flex-shrink-1"></div>
+        </div>
+
+        <div id="homeBottomDiv2" class="d-flex justify-content-around">
+            <p>Park cheaper.</p>
+            <p>Park faster.</p>
+            <p>Parking for the community.</p>
+            <p>Listed by the community. </p>
+        </div>
+    </div> 
    
-    {% else %}
-      <p>Please login to see this page.</p>
-      <p><a href="{% url 'login' %}">Log In</a></p>
 
-      <p>Not signed up? Register here: </p>
-      <p class="lead"><a class="btn btn-outline-light btn-lg" href="{% url 'signup' %}" role="button">Register Here</a></p>
+
+    <!-- SignUp View -->
+    {% else %}
+    <h4 id="introTopHome" class="display-4 d-flex justify-content-center">Need Parking?      Listing Parking? </h4>
+    <div id="homeDivMain" class="d-flex flex-column justify-content-center">
+        <div id="homeTopDiv" class="d-flex justify-content-center flex-shrink-1">
+            <div id="homeLeftDiv" class="d-flex flex-column align-items-center"></div>
+
+            <div id="homeCenterDiv" class="d-flex flex-column flex-grow-1 w-100 align-items-center">
+                <img id="parkingLogoHome" src="{% static 'img/logoFinalWhite.png' %}" alt="">
+                <h3 id="get">Get parking...</h3>
+                <p class="lead"><a id="homeRegister" class="btn btn-danger btn-lg" href="{% url 'signup' %}" role="button">Register Here</a></p>
+                <p><a id="homeLogin" class=" btn btn-outline-light" href="{% url 'login' %}">Log In</a></p>
+            </div>
+
+            <div id="homeRightDiv" class="d-flex flex-column align-items-center flex-shrink-1">
+            </div>
+        </div>
+        <div id="homeBottomDiv" class="d-flex justify-content-around">
+            <p>Park cheaper.</p>
+            <p>Park faster.</p>
+            <p>Parking for the community.</p>
+            <p>Listed by the community. </p>
+        </div>
+    </div>
+
     {% endif %}
 
 </div>

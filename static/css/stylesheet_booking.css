@@ -11,7 +11,14 @@
 /* User Booking Inbox % Message Inbox */
 #bookingMain,
 #inboxMain {
-    background-color: var(--cubanoLight);
+    /* background-color: var(--cubanoLight); */
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-image: url(../img/home2.jpg);
+    background-color: var(--rust);
     padding: 6rem;
     font-family: 'Nunito', sans-serif;
     padding-bottom: 9rem;

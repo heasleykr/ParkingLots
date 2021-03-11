@@ -119,9 +119,6 @@ def loved_Listings(request):
         # Query DB: grab all LovedRentals by user
         loved_list = LovedRentals.objects.filter(user=request.user)
 
-        # filter listings by loved
-        # loved_listings = Listing.object.filter()
-
     # send to listings.html
     return render(request, 'bookings/loved_listings.html', {'loved': loved_list})
 
@@ -178,12 +175,56 @@ def single_Booking(request, rental_id):
     id = int(rental_id)
 
     if request.method == "GET":
-        # grad reguested listing by id
+        # grab reguested listing by id
         theRental = RentalItem.objects.get(pk=id)
         theListing = theRental.listing
         rental_details = theRental.rental
 
-    # send to listing_single.html
+    # send to single_booking.html
+    return render(request, 'bookings/single_booking.html', {'rental_Item': theRental, 'rental': rental_details, 'listing': theListing})
+
+
+# Confirms Rental Request
+def confirm_Request(request, rental_Item_id):
+
+    if request.method == "GET":
+        # get rentalItem object
+        request_Decision = RentalItem.objects.get(pk=rental_Item_id)
+
+        # update confirm/deny value
+        request_Decision.confirmed = True
+
+        # save
+        request_Decision.save()
+
+        # Updated View
+        theRental = RentalItem.objects.get(pk=rental_Item_id)
+        theListing = theRental.listing
+        rental_details = theRental.rental
+
+    # send to single_booking.html
+    return render(request, 'bookings/single_booking.html', {'rental_Item': theRental, 'rental': rental_details, 'listing': theListing})
+
+
+# Denys Rental Request
+def deny_Request(request, rental_Item_id):
+
+    if request.method == "GET":
+        # get rentalItem object
+        request_Decision = RentalItem.objects.get(pk=rental_Item_id)
+
+        # update confirm/deny value
+        request_Decision.cancelled = True
+
+        # save
+        request_Decision.save()
+
+        # Updated View
+        theRental = RentalItem.objects.get(pk=rental_Item_id)
+        theListing = theRental.listing
+        rental_details = theRental.rental
+
+    # send to single_booking.html
     return render(request, 'bookings/single_booking.html', {'rental_Item': theRental, 'rental': rental_details, 'listing': theListing})
 
 

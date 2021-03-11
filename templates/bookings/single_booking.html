@@ -4,125 +4,195 @@
 {% block title %}ParkingLots{% endblock title %}
 
 {% block content %}
-  <h1>Booking Request</h1>
-  <hr />
-  
-  <!-- Lister Display -->
-  {% if listing.lister == user %}
-    <h3>Your listing has been requested for rental: </h3>
+<div id="singleBookingMain">
+  <div id="bookingBufferDiv" class="d-flex justify-content-start">
+    <div id="bookingActionDiv" class="w-50 d-flex flex-column justify-content-center">
+      <h1 id="bookingTitle">Booking Request</h1>
+      <hr />
+      
+      <!-- Lister Display -->
+      {% if listing.lister == user %}
+        <h3>Your listing has been requested for rental: </h3>
 
 
-    <hr />
+        <hr />
 
-    <!-- Display Action to be taken, if new request -->
-    {% if rental_Item.cancelled == False and rental_Item.confirmed == False %}
-      <h2>Your Next Step: </h2>
-      <a class="btn btn-outline-success btn-sm" href="{% url 'home'%}" role="button">Confirm Request</a>
-      <a class="btn btn-outline-danger btn-sm" href="{% url 'home'%}" role="button">Deny Request</a>
+        <h3>Rental requested for: {{ rental.date }}</h3>
+        <h3>From: {{ rental.startTime }} To: {{ rental.endTime }}</h3>
+        <hr />
+        <h3>Total: ${{ rental.totalPrice }}</h3>
 
-    {% else %}
-      {% if rental_Item.cancelled == True %}
-        <h2>Rental Canceled</h2>
-        <h4>Canceled Reason: ADD in MODEL </h4>
-      {% elif rental_Item.confirmed == True %}
-        <h2>Rental Confirmed</h2>
-        <h4>No further action needed from you at this time.</h4>
+        <!-- Display Action to be taken, if new request -->
+        {% if rental_Item.cancelled == False and rental_Item.confirmed == False %}
+          <h2 id="bookingStep1">Your Next Step: </h2>
+          <div id="bookingBtns" class="d-flex justify-content-start">
+            <a class="btn btn-success btn-lg" href="{% url 'confirm_booking' rental_Item.rental_Item_id %}" role="button">Confirm Request</a>
+            <a class="btn btn-danger btn-lg" href="{% url 'deny_booking' rental_Item.rental_Item_id %}" role="button">Deny Request</a>
+          </div>
+          <p id="contactBooking"><a href="{% url 'home'%}">Contact Customer</a> |  <a href="{% url 'home'%}">Contact ParkingLots</a></p>
+        {% else %}
+
+          {% if rental_Item.cancelled == True %}
+            <h2>Rental Canceled</h2>
+          {% elif rental_Item.confirmed == True %}
+            <h2>Rental Confirmed</h2>
+            <h4>No further action needed from you at this time.</h4>
+          {% endif %}
+
+        {% endif %}
+
+
+        <!-- Display Renter View -->
+      {% else %}
+        <!-- Display current stage -->
+        {% if rental_Item.cancelled == False and rental_Item.confirmed == False %}
+          <h3 id="bookingStep2">Your request is still being processed: </h3>
+          <hr />
+          <h4> No further action is needed from you at this time. We'll notify you when action has been taken. </h4>
+        {% else %}
+            {% if rental_Item.cancelled == True %}
+                <h2>Rental Canceled</h2>
+            {% elif rental_Item.confirmed == True %}
+                <h2>Rental Confirmed</h2>
+                <h4>{{ rental.confirmationNumber }}</h4>
+            {% endif %}
+        {% endif %}
+
+        <div id="bookingDetails">
+          <h3>Rental requested for: {{ rental.date }}</h3>
+          <h3>From: {{ rental.startTime }} To: {{ rental.endTime }}</h3>
+          <hr />
+          <h3>You Pay: ${{ rental.totalPrice }}</h3>
+        </div>
+
+        <p id="contactBooking2"><a href="{% url 'home'%}">Contact Lister</a> |  <a href="{% url 'home'%}">Contact ParkingLots</a></p>
+
       {% endif %}
-    {% endif %}
-
-
-    <p><a href="{% url 'home'%}">Contact Customer</a> |  <a href="{% url 'home'%}">Contact ParkingLots</a></p>
-
-    <h3>Rental requested for: {{ rental.date }}</h3>
-    <h3>From: {{ rental.startTime }} To: {{ rental.endTime }}</h3>
-    <!-- TODO: Add vehicle type -->
-    <hr />
-    <h3>Total: ${{ rental.totalPrice }}</h3>
-
-
-    <!-- Display Renter View -->
-  {% else %}
-    <h3>Your Rental Request: </h3>
-
-
-    <hr />
-    <!-- Display current stage -->
-    {% if rental_Item.cancelled == False and rental_Item.confirmed == False %}
-      <h2>Your request is still being processed.</h2>
-      <h4> No further action is needed from you at this time. We'll notify you when action has been taken </h4>
-    {% else %}
-      {% if rental_Item.cancelled == True %}
-        <h2>Rental Canceled</h2>
-        <h4>Canceled Reason: ADD in MODEL </h4>
-      {% elif rental_Item.confirmed == True %}
-        <h2>Rental Confirmed</h2>
-        <h4>{{ rental.confirmationNumber }}</h4>
-      {% endif %}
-    {% endif %}
-
-    <p><a href="{% url 'home'%}">Contact Lister</a> |  <a href="{% url 'home'%}">Contact ParkingLots</a></p>
-
-    <h3>Rental requested for: {{ rental.date }}</h3>
-    <h3>From: {{ rental.startTime }} To: {{ rental.endTime }}</h3>
-    <!-- TODO: Add vehicle type -->
-    <hr />
-    <h3>You Pay: ${{ rental.totalPrice }}</h3>
-
-  {% endif %}
-
-    <hr />
-     <!-- Generic Listing Display View -->
-    <div id="listerView" class="jumbotron">
-      <h2>{{ listing.title }}</h2>
-      <p>{{ listing.description }}</p>
-      
-      <!-- TODO: Load Images -->
-      <h3>{{ listing.images_id }}</h3>
-
-          <!-- Descriptions  -->
-      <p>{{ listing.hourly_rate }}</p>
-      <p>{{ listing.day_rate }}</p>
-
-      <div>
-          {% if listing.overNight is True %}
-
-              <p>Overnight Parking: Yes</p>
-          
-          {% else %}
-          
-              <p>Overnight Parking: No</p>
-
-          {% endif %}
-      </div>
-
-      <div>
-          {% if listing.parking_Pass is True %}
-
-              <p>Parking Pass Needed: Yes</p>
-      
-          {% else %}
-      
-              <p>Parking Pass Needed: No</p>
-
-          {% endif %}
-      </div>
-
-      <div>
-          {% if listing.meet_Renter is True %}
-
-              <p>Lister must be present when parking: Yes</p>
-      
-          {% else %}
-      
-              <p>Lister must be present when parking: No</p>
-
-          {% endif %}
-      </div>
-
-      <!-- TODO: Map View Addition -->
-      <h3>TODO: Address: </h3>
-      <p>{{ listing.address.address1 }}</p>
-      <p>{{ listing.address.address2 }}</p>
-
     </div>
+    <div id="bookingBufferRight"></div>
+  </div>
+    <!-- Generic Listing Display View -->
+  <div id="singleBooking">
+    <div id="cardViewBooking">
+      <h2 id="titleBooking">{{ listing.title}}</h2>
+      <div id="titleSubBooking" class="d-flex justify-content-between">
+          <p id="locationBooking">{{ listing.address.city }}, {{ listing.address.state }}</p>
+
+          <div id="loveBooking" class="d-flex justify-content-around">
+              {% if loved.listing %}
+                  <a id="lovedButtonDeleteBooking" class="disabled" href="" role="button"><i class="fas fa-heart"></i><p>Loved</p></a>
+              {% else %}
+                  <a id="lovedButtonBooking" class="disabled" href="" role="button"><i class="far fa-heart"></i><p>Save</p></a>
+              {% endif %}
+          </div>
+      </div>
+        
+
+            <!-- Descriptions  -->
+      <div id="detailsBooking" class="container">
+          <h2 id="typeDetailBooking">{{ listing.parking}} hosted by {{ listing.lister.first_name }}</h2>
+          <hr />
+          <div id="panelViewBooking" class="d-flex justify-content-between">
+              <div id="iconDBooking">
+                  <div class="d-flex justify-content-start">
+                      {% if listing.overNight is True %}
+                          <i class="fas fa-moon"></i>
+                          <p>Overnight Parking: <b>Yes</b></p>
+                      
+                      {% else %}
+                          <i class="fas fa-moon"></i>
+                          <p>Overnight Parking: <b>No</b></p>
+
+                      {% endif %}
+                  </div>
+                  <div class="d-flex justify-content-start">
+                      {% if listing.parking_Pass is True %}
+                          <i class="fas fa-ticket-alt"></i>
+                          <p>Parking Pass Needed: <b>Yes</b></p>
+                  
+                      {% else %}
+                          <i class="fas fa-ticket-alt"></i>
+                          <p>Parking Pass Needed: <b>No</b></p>
+
+                      {% endif %}
+                  </div>
+                  <div class="d-flex justify-content-start">
+                      {% if listing.meet_Renter is True %}
+                          <i class="fas fa-handshake"></i>
+                          <p>Lister must be present when parking: <b>Yes</b></p>
+                  
+                      {% else %}
+                          <i class="fas fa-handshake"></i>
+                          <p>Lister must be present when parking: <b>No</b></p>
+
+                      {% endif %}
+                  </div>
+              </div>
+              <div id="sideRateBooking" class="rounded shadow d-flex flex-column justify-content-center align-items-center">
+                  <div id="pricingDBooking">
+                      <p>${{ listing.hourly_Rate }} / hour</p>
+                      <p>${{ listing.day_Rate }} / day</p>
+                  </div>
+                  <div>
+                      <p class="lead"><a id="rentButton1Booking" class="btn btn-danger btn-lg disabled" href="" role="button">Rent</a></p>
+                  </div>
+              </div>
+          </div>
+
+            <!-- TODO: Map View Addition -->
+            <hr />
+            <h3 id="locBooking">Location </h3>
+            <div id="addressMainBooking" class="d-flex justify-content-start">
+                <i class="fas fa-map-marked-alt"></i>
+                <div>
+                    <p>{{ listing.address.address1 }}</p>
+                    <p>{{ listing.address.address2 }}</p>
+                    <p>{{ listing.address.city }}, {{ listing.address.state }} {{ listing.address.zip }}</p>
+                </div>
+            </div>
+
+            <h2 id="detailDesBooking">{{ listing.description }}</h2>
+
+            <div id="carouselExampleControlsBooking" class="carousel carousel-dark slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                  {% if listing.images.image1 %}
+                      <div class="carousel-item active">
+                          <img src="/media/{{ listing.images.image1 }}" class="d-block w-100" alt="...">
+                      </div>
+                  {% endif %}
+                  {% if listing.images.image2 %}
+                  <div class="carousel-item">
+                      <img src="/media/{{ listing.images.image2 }}" class="d-block w-100" alt="...">
+                  </div>
+                  {% endif %}
+                  {% if listing.images.image3 %}
+                  <div class="carousel-item">
+                      <img src="/media/{{ listing.images.image3 }}" class="d-block w-100" alt="...">
+                  </div>
+                  {% endif %}
+                  {% if listing.images.image4 %}
+                  <div class="carousel-item">
+                      <img src="/media/{{ listing.images.image4 }}" class="d-block w-100" alt="...">
+                  </div>
+                  {% endif %}
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+              </button>
+          </div>
+            
+            <hr />
+
+            <div id="backListBooking" class="d-flex justify-content-around">
+                <p class="lead"><a class="btn btn-outline-info" href="{% url 'all_bookings' %}" role="button">Your Rentals</a></p>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

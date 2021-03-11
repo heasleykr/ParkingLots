@@ -39,7 +39,93 @@ nav {
 
 /* Home html */
 #homeView {
-    height: 100%
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-image: url(../img/home3.jpg);
+    background-color: var(--rust);
+}
+
+#homeDivMain,
+#homeDivMain2 {
+    color: var(--cubano);
+    font-family: 'Raleway', sans-serif;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+#introTopHome,
+#introTopHome2 {
+    font-family: 'Rancho', cursive;
+    color: white;
+    background-color: var(--rust);
+}
+
+#homeTopDiv,
+#homeTopDiv2 {
+    padding-top: 3rem;
+    margin-right: 4rem;
+    margin-left: 4rem;
+}
+
+#homeLeftDiv,
+#homeRightDiv,
+#homeLeftDiv2,
+#homeRightDiv2 {
+    font-size: 4rem;
+}
+
+
+#homeCenterDiv,
+#homeCenterDiv2 {
+    color: var(--rust);
+    padding-right: 20rem;
+    padding-left: 20rem;
+}
+
+#parkingLogoHome,
+#parkingLogoHome2 {
+    width: 300px;
+    height: 200px;
+}
+
+#get {
+    color: var(--rust);
+    font-family: 'Rancho', cursive;
+    font-size: 8rem;
+    text-shadow: 1px 1px 2px white;
+}
+
+#homeRegister,
+#homeRegister2 {
+    background-color: var(--rust);
+    text-shadow: 1px 1px 2px #726e6e;
+}
+
+#homeLogin,
+#homeLogout {
+    margin-top: 2rem;
+    text-shadow: 1px 1px 2px #686363;
+}
+
+#homeBottomDiv,
+#homeBottomDiv2 {
+    font-size: 2rem;
+    color: white;
+    margin-top: 2.5rem;
+    font-family: 'Raleway', sans-serif;
+}
+
+#homeBack {
+    margin-top: 2rem;
+
+}
+
+#homeBack2 {
+    margin-bottom: 2rem;
+
 }
 
 /* Page Headers */
@@ -47,7 +133,10 @@ nav {
 #logoSuccess,
 #listingHead,
 #create1,
-#lovedHead {
+#lovedHead,
+#bookingTitle,
+#bookingStep1,
+#BookingStep2 {
     font-family: 'Rancho', cursive;
     color: white;
 }
@@ -55,6 +144,39 @@ nav {
 #map {
     height: 400px;
     width: 100%;
+}
+
+/* Login/Logout/Signup */
+#loginMain,
+#signUpMain,
+#logoutMain {
+    padding-top: 8rem;
+    height: 800px;
+    background-color: rgba(173, 233, 233, 0.95);
+}
+
+#loginHead,
+#signUpHead,
+#logoutHead {
+    font-size: 7rem;
+    font-family: 'Rancho', cursive;
+    color: var(--rust);
+    padding-bottom: 6rem;
+}
+
+.styleDiv {
+    padding: 7rem;
+    border-top: 3px solid var(--cubano);
+    border-bottom: 3px solid var(--cubano);
+}
+
+#signUpMain {
+    height: 2000px;
+}
+
+#registerIntro {
+    margin-bottom: 4rem;
+    margin-left: 1rem;
 }
 
 /* Loved */
@@ -183,10 +305,11 @@ nav {
     font-size: 1.3rem;
 }
 
-/* Single Listing & Rental Combo & listing_preview.html */
+/* Single Listing & Rental Combo & listing_preview.html & single_booking*/
 #singleListing,
 #rentalListing,
-#previewListing {
+#previewListing,
+#singleBooking {
     background-color: white;
     padding-top: 2rem;
     font-family: 'Nunito', sans-serif;
@@ -195,32 +318,37 @@ nav {
 
 #title,
 #titleRental,
-#titlePreview {
+#titlePreview,
+#titleBooking {
     color: var(--cubano);
     margin-left: 3rem;
 }
 
 #titleSub,
 #titleSubRental,
-#titleSubPreview {
+#titleSubPreview,
+#titleSubBooking {
     padding-right: 3rem;
 }
 
 #titleSub i,
 #titleSubRental i,
-#titleSubPreview i {
+#titleSubPreview i,
+#titleSubBooking i {
     margin-right: .7rem;
 }
 
 #titleSub p,
 #titleSubRental p,
-#titleSubRental p {
+#titleSubRental p,
+#titleSubBooking p {
     text-decoration: underline;
 }
 
 #love,
 #loveRental,
-#lovePreview {
+#lovePreview,
+#loveBooking {
     color: var(--cubanoLight);
     font-size: 1rem;
     color: var(--rust);
@@ -228,7 +356,8 @@ nav {
 
 #location,
 #locationRental,
-#locationPreview {
+#locationPreview,
+#locationBooking {
     color: var(--cubanoLight);
     padding-left: 3rem;
     padding-bottom: 2rem;
@@ -238,9 +367,11 @@ nav {
 #typeDetail,
 #typeDetailRental,
 #typeDetailPreview,
+#typeDetailBooking,
 #loc,
 #locRental,
-#locPreview {
+#locPreview,
+#locBooking {
     color: var(--cubano);
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -249,9 +380,11 @@ nav {
 #iconD,
 #iconDRental,
 #iconDPreview,
+#iconDBooking,
 #addressMain,
 #addressMainRental,
-#addressMainPreview {
+#addressMainPreview,
+#addressMainBooking {
     color: var(--cubano);
     font-size: 1.2rem;
 }
@@ -259,16 +392,19 @@ nav {
 #iconD i,
 #iconDRental i,
 #iconDPreview i,
+#iconDBooking i,
 #addressMain i,
 #addressMainRental i,
-#addressMainPreview i {
+#addressMainPreview i,
+#addressMainBooking i {
     margin-right: 1.3rem;
     color: var(--rust);
 }
 
 #sideRate,
 #sideRateRental,
-#sideRatePreview {
+#sideRatePreview,
+#sideRateBooking {
     width: 19rem;
     height: 15rem;
     color: var(--rust);
@@ -277,21 +413,25 @@ nav {
 
 #pricingD,
 #pricingDRental,
-#pricingDPreview {
+#pricingDPreview,
+#pricingDBooking {
     font-size: 1.4rem;
     margin-bottom: .5rem;
 }
 
 #rentButton1,
 #rentButton2,
-#rentButton1Preview {
+#rentButton1Preview,
+#rentButton1Booking,
+#rentButton2Booking {
     width: 15rem;
     background-color: var(--rust);
 }
 
 #detailDes,
 #detailDesRental,
-#detailDesPreview {
+#detailDesPreview,
+#detailDesBooking {
     font-family: 'Raleway', sans-serif;
     font-size: 1.5rem;
     margin-top: 3rem;
@@ -299,7 +439,8 @@ nav {
 }
 
 #backList,
-#backListRental {
+#backListRental,
+#backListBooking {
     color: var(--rust);
     margin: 3rem;
     margin-bottom: 4rem;
@@ -346,6 +487,43 @@ nav {
     background-color: var(--cubano);
     margin-top: 2rem;
     margin-left: 25rem;
+}
+
+/* Booking Request */
+#bookingBufferDiv {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-image: url(../img/home.jpg);
+}
+
+#bookingActionDiv {
+    padding: 4rem;
+}
+
+#bookingStep1,
+#bookingStep2 {
+    font-size: 2.6rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+#bookingDetails {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+#bookingBtns {
+    padding-bottom: 2rem;
+}
+
+#bookingBtns a {
+    margin: 1rem;
+}
+
+#contactBooking,
+#contactBooking2 {
+    margin-left: 1rem;
 }
 
 /* Rental Requested */

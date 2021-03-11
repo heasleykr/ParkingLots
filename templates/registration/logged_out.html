@@ -4,6 +4,11 @@
 {% block title %}ParkingLots{% endblock title %}
 
 {% block content %}
-  <p>Logged out!</p>
-  <a href="{% url 'login'%}">Click here to login again.</a>
+<div id="logoutMain" class="d-flex flex-column align-items-center container-sm">
+  <div class="styleDiv">
+    <h1 id="logoutHead">Log Out</h1>
+    <p>Logged out!</p>
+    <a href="{% url 'login'%}">Click here to login again.</a>
+  </div>
+</div>
 {% endblock %}
