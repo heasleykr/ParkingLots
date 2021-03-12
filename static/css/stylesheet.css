@@ -60,7 +60,7 @@ nav {
 #introTopHome2 {
     font-family: 'Rancho', cursive;
     color: white;
-    background-color: var(--rust);
+    background-color: var(--cubanoLight);
 }
 
 #homeTopDiv,
