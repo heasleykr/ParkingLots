@@ -12,7 +12,7 @@ class HomePageView(TemplateView):
     template_name = 'home.html'
 
 
-# Final Preview View For Lister: Imgage/Address/Listing pk's passed in
+# Final Preview View For Lister
 def preview_Listing(request, img_obj, listing_body, listing_address):
 
     if request.method == "POST":
@@ -22,9 +22,6 @@ def preview_Listing(request, img_obj, listing_body, listing_address):
 
     else:
         # Query DB, return Obj
-        # image = Images.objects.get(images_id=int(img_obj))
-        # address = Address.objects.get(address_id=int(listing_address))
-        # listing = Listing.objects.get(listing_id=int(listing_body))
         thePreview = Listing.objects.get(pk=listing_body)
 
     return render(request, 'listings/listing_preview.html', {'listing': thePreview})
@@ -83,7 +80,6 @@ def add_Listing_5(request, img_obj):
             new_listing = lForm.save(commit=False)  # don't save to DB yet
 
             # Add Foreign Keys
-            # new_listing.address = new_address.instance
             new_listing.address = new_address
             print(new_address)
 

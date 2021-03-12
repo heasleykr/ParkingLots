@@ -53,7 +53,7 @@ class Message(models.Model):
         return reverse('single_message', args=[str(self.message_id)])
 
 
-# Rental Item Model (weak entity to house unique Listing, Rental, and Users foreign keys) This is closely modeled after Django-SHOP 'OrderItem'
+# Rental Item Model 
 class RentalItem(models.Model):
 
     ############## DB Fields #############################

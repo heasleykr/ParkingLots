@@ -14,7 +14,7 @@ class ListingForm(forms.ModelForm):
     class Meta:
         model = Listing
         fields = ('title', 'description', 'hourly_Rate', 'day_Rate', 'overNight',
-                  'parking_Pass', 'meet_Renter', 'vehicles', 'parking', 'date', 'time',)
+                  'parking_Pass', 'meet_Renter', 'vehicles', 'parking',)
         exlude = ('address', 'images',)
 
     # Styling addition
@@ -103,11 +103,6 @@ class ListingForm(forms.ModelForm):
                         FormActions(Submit(
                             'Preview Listing', 'Preview Listing')),
                         css_id='btnListing'
-                    ),
-                    Div(
-                        'date',
-                        'time',
-                        css_id='deleteMe'
                     ),
                     css_id="listingUploadDiv"
                 )
