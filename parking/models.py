@@ -31,9 +31,6 @@ class Address(models.Model):
     # Forced property for VS Code // Django adds dynamically
     objects = models.Manager()
 
-    # Google Map inputs / Put with Map view
-    # address = map_fields.AddressField(max_length=200, default=None, blank=True, null=True)
-    # geolocation = map_fields.GeoLocationField(max_length=100, default=None, blank=True, null=True)
 
     def __str__(self):
         return str(self.address_id)
@@ -42,8 +39,6 @@ class Address(models.Model):
         return Address
 
 # Images Model
-
-
 class Images(models.Model):
     images_id = models.AutoField(primary_key=True)
     image1 = models.ImageField(

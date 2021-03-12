@@ -8,7 +8,7 @@ urlpatterns = [
 ]
 
 
-# TODO: Set views. 
+# Set views. 
 ''' 
 accounts/ login/ [name='login']
 accounts/ logout/ [name='logout']

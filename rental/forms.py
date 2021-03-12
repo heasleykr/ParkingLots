@@ -13,8 +13,6 @@ vehicle_choices = ((1, 'Compact/Sedan'),
                    (4, 'Motocycle/Moped'),
                    (5, 'Motorhome or Oversized'))
 
-# FormActions for bootstrap
-# css_class
 
 
 class RentalForm(forms.Form):

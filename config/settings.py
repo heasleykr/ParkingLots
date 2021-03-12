@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'fontawesome_5',
     'jquery',
     'django_email',
-    # 'bootstrap_datepicker_plus', would need install
+
 
     # Local
     'accounts',
@@ -165,18 +165,6 @@ LOGOUT_REDIRECT_URL = 'home'
 #Email backend 'smtp: simple mail transport protocol'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-#SendGrid for testing only. Blank Fields Out before pushing !
-# DEFAULT_FROM_EMAIL = env.str('DEFAULT_FROM_EMAIL')
-# EMAIL_HOST = 'smtp.sendgrid.net'
-# EMAIL_HOST_USER = 'apikey'
-# EMAIL_HOST_PASSWORD= env.str('EMAIL_HOST_PASSWORD')
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-
-# SENDGRID_EMAIL_HOST = "smtp.sendgrid.net"
-# SENDGRID_EMAIL_PORT = 587
-# SENDGRID_EMAIL_USERNAME = env.str('DEFAULT_FROM_EMAIL')
-# SENDGRID_EMAIL_PASSWORD = env.str('EMAIL_HOST_PASSWORD')
 
 GOOGLE_MAPS_API_KEY = env.str('GOOGLE_MAPS_API_KEY')
 

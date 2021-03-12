@@ -31,7 +31,7 @@
                                     <p>{{ message.msg_content }}</p>
 
 
-                                    <!-- TODO: Add links to single listing and booking -->
+                                    
                                     {% for rentalItem in message.message.all %}
                                         <a class="btn btn-outline-info btn-sm"  href="{% url 'single_booking' rentalItem.rental_Item_id %}" role="button">Rental Request</a>
                                     {% endfor %}
@@ -58,7 +58,6 @@
                             </div>
                             <div id="card-bodyRec" class="card-body bg-transparent">
                                 <p>{{ message.msg_content }}</p>
-                                <!-- TODO: Add links to single listing and booking -->
 
                                 {% for rentalItem in message.message.all %}
                                     <a class="btn btn-outline-info btn-sm" href="{% url 'single_booking' rentalItem.rental_Item_id %}" role="button">Rental Request</a>
