@@ -30,7 +30,7 @@ SECRET_KEY = env.str('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', default=False)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '.herokuapp.com']
 
 
 # Application definition
@@ -61,6 +61,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -140,10 +141,12 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))]
 STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
 
-#Crispy Configuration
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Crispy Configuration
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-#Bootstrap Configuration w/ JQuery
+# Bootstrap Configuration w/ JQuery
 BOOTSTRAP4 = {
     'include_jquery': True,
 }
@@ -162,7 +165,7 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 
-#Email backend 'smtp: simple mail transport protocol'
+# Email backend 'smtp: simple mail transport protocol'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 
